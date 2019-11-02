@@ -1,4 +1,4 @@
-/*Nom des visiteurs de l'evenement historique de montpellier*/
+/*Nom des visiteurs des evenements historiques de montpellier*/
 SELECT NOM_VISITEUR
 FROM VISITEUR VIS, EVENEMENT EV, VISITE
 WHERE VIS.ID_VISITEUR = VISITE.ID_VISITEUR
