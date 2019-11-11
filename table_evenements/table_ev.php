@@ -8,7 +8,7 @@
 </header>
 <body>
 <h1>PDO<h1>
-<?php 
+<?php 			//serveur   nombase   username   motdepasse
     $mon_pdo = new_pdo("localhost","HLIN511","omvadmin","openmediavault");
     if($mon_pdo == null)
     {
