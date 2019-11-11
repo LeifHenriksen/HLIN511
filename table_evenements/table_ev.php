@@ -1,5 +1,5 @@
 <?php 
-    include 'pdo.php';
+    include 'affichage_table.php';
 ?>
 <html>
 <header>
