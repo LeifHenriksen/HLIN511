@@ -6,7 +6,7 @@ function new_pdo($servername, $dbname, $username, $password)
         $conn = new PDO("mysql:host=$servername;dbname=$dbname;port=3306;charset=UTF8", $username, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully";
+        //echo "Connected successfully";
         echo '<br>';
     }
     catch(PDOException $e)

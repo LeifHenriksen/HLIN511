@@ -3,7 +3,7 @@
 <head>
 	<title>Login</title>
 	<link rel="stylesheet" href="style.css" />
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 </head>
 <body>
 <div id="container">
@@ -17,13 +17,14 @@
 	<input  type="submit" name="test" value="Se connecter">
 	<br>
 	<br>
-	<a href="inscription.php" >New user? Sign in</a>
+	<a href="inscription.html" >New user? Sign in</a>
 <?php
-if(isset($_GET['erreur'])){
- $err = $_GET['erreur'];
- if($err==1 || $err==2)
-echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
-                }
+      if(isset($_GET['erreur']))
+      {
+          $err = $_GET['erreur'];
+          if($err==1 || $err==2)
+              echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+      }
 ?>
 </form>
 </div>
