@@ -35,8 +35,8 @@ else if($_SESSION['username'] !== "")
         echo "Bonjour $user, vous êtes connecté(e) en tant que $acess_type.";
         echo'<form method="get"><input type="submit" name="deconnexion" value="Se déconnecter"></form>';
         print_lien("'Table evenements'", '../tables/table_ev.php');
-        print_lien("'Creer/Supprimer des evenements'", '../index.php');
-        print_lien("'Table de contributeurs'", '../tables/table_contributeurs.php');
+        print_lien("'Creer/Supprimer des evenements'", '../login/contribution.php');
+        print_lien("'Table de contributeurs'", '../login/table_contributeurs.php');
         print_lien("'Table de themes'", '../index.php');
         break;
     case 2:
@@ -44,7 +44,7 @@ else if($_SESSION['username'] !== "")
         echo "Bonjour $user, vous êtes connecté(e) en tant que $acess_type.";
         echo'<form method="get"><input type="submit" name="deconnexion" value="Se déconnecter"></form>';
         print_lien("'Table evenements'", '../tables/table_ev.php');
-        print_lien("'Creer/Supprimer des evenements'", '../index.php');
+        print_lien("'Creer/Supprimer des evenements'", '../login/contribution.php');
         break;
     default:
         echo 'erreur';
