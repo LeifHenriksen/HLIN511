@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include '../bdd_class/bdd_class.php';
-include 'affichage_table.php';
+include 'table_class.php';
 if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) 
 {
     header('Location: ../login/login.php');
@@ -16,10 +16,10 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin']))
 <h1>Table Evenements</h1>
 
 <?php 			//serveur   nombase   username   motdepasse
-    $bdd = new DataBase("localhost","HLIN511","root","");
-    $sql = "SELECT NOM_EVENT, ADRESSE, THEME, DESCRIPTIF FROM EVENEMENT";
+    $bdd = new DataBase("localhost","HLIN511","omvadmin","openmediavault");
+    $sql = "SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF FROM EVENEMENT";
     $resultat = $bdd->getPDO()->query($sql);
-    print_table("EVENEMENTS",$resultat); 
+    Table::printTableButton("EVENEMENTS","Inscription",$resultat);
 ?>
 
 </body>

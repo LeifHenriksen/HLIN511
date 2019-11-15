@@ -1,14 +1,11 @@
 <?php 
 session_start();
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['user_type'] == 1) 
-{
-    
-} 
-else 
+include '../bdd_class/bdd_class.php';
+include 'table_class.php';
+if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) 
 {
     header('Location: ../login/login.php');
-}
-include 'affichage_table.php';
+} 
 ?>
 <html>
 <header>
@@ -18,19 +15,10 @@ include 'affichage_table.php';
 <body>
 <h1>Table Evenements</h1>
 <?php 			//serveur   nombase   username   motdepasse
-        
-        $mon_pdo = new_pdo("localhost","HLIN511","omvadmin","openmediavault");
-if($mon_pdo == null)
-{
-    echo 'ERREUR! avec le PDO';
-    echo '<br>';
-}
-else
-{
+    $bdd = new DataBase("localhost","HLIN511","omvadmin","openmediavault");
     $sql = "SELECT ID, NOM FROM UTILISATEUR WHERE TYPE_UTILISATEUR = 2";
-    $resultat = $mon_pdo->query($sql);
-    print_table("CONTRIBUTEURS",$resultat); 
-}
+    $resultat = $bdd->getPDO()->query($sql);
+    Table::printTableButton("CONTRIBUTEURS","Supprimer",$resultat);
 ?>
 </body>
 </html>
