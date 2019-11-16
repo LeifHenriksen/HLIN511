@@ -6,6 +6,11 @@ class Table
     {
         $size_col = $resultat_requete->columnCount();
         $premier_ligne = $resultat_requete->fetch();
+        if($premier_ligne == false)
+        {
+            echo 'Resultat vide.';
+            return;
+        }
         echo '<br>';
         echo '<table>';
         echo '<thead>
@@ -47,6 +52,11 @@ class Table
     {
         $size_col = $resultat_requete->columnCount();
         $premier_ligne = $resultat_requete->fetch();
+        if($premier_ligne == false)
+        {
+            echo 'Resultat vide.';
+            return;
+        }
         echo '<br>';
         echo '<form action="" method="get">';
         echo '<table>';
@@ -70,6 +80,7 @@ class Table
                 }
                 echo '</tbody>'; 
                 echo '</table>';
+		echo "<input type='hidden' name='nom_table' value=$nomtable>";
                 echo '</form>';
     }
 

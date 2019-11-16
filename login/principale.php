@@ -30,7 +30,6 @@ else if($_SESSION['username'] !== "")
         $acess_type="utilisateur";
         echo "Bonjour $user, vous êtes connecté(e) en tant que $acess_type.";
         echo'<form method="get"><input type="submit" name="deconnexion" value="Se déconnecter"></form>';
-        print_lien("'Table evenements'", '../tables/table_ev.php');
         print_lien_table("'Table de Evenements'", '../tables/table.php',"EVENEMENTS");
 		break;
     case 1:
@@ -40,6 +39,7 @@ else if($_SESSION['username'] !== "")
         print_lien_table("'Table de Evenements'", '../tables/table.php',"EVENEMENTS");
         print_lien("'Creer/Supprimer des evenements'", '../login/contribution.php');
         print_lien_table("'Table de contributeurs'", '../tables/table.php',"CONTRIBUTEURS");
+        print_lien_table("'Table de visiteurs'", '../tables/table.php',"VISITE");
         print_lien("'Table de themes'", '../index.php');
         break;
     case 2:
@@ -48,6 +48,7 @@ else if($_SESSION['username'] !== "")
         echo'<form method="get"><input type="submit" name="deconnexion" value="Se déconnecter"></form>';
         print_lien_table("'Table de Evenements'", '../tables/table.php',"EVENEMENTS");
         print_lien("'Creer/Supprimer des evenements'", '../login/contribution.php');
+        print_lien_table("'Table de visiteurs'", '../tables/table.php',"VISITE");
         break;
     default:
         echo 'erreur';
