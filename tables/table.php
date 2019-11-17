@@ -19,7 +19,7 @@ if(isset($_GET["nom_table"]))
     echo '<body>';
     echo '<h1>'.$_GET["nom_table"].'</h1>';
     
-    $bdd = new DataBase("localhost","HLIN511","omvadmin","openmediavault");
+    $bdd = new DataBase("localhost","HLIN511","root","");
     $user = new User(NULL,NULL,NULL,true);
 
     switch($_GET["nom_table"])

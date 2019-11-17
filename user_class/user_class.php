@@ -5,7 +5,7 @@
         private $user_id;
         private $user_type;
         private $loggedin;
-        
+             
         function __construct($username, $password, $bdd, $loggedin)
         {
             if(!$loggedin || $loggedin == NULL)
@@ -16,7 +16,7 @@
             {
                 $this->user_id   = $_SESSION["user_id"];
                 $this->username  = $_SESSION["username"];
-                $this->user_type = $_SESSION["user_type"];;
+                $this->user_type = $_SESSION["user_type"];
                 $this->loggedin  = true;
             }
         }
@@ -36,7 +36,7 @@
                 {
                     $this->username = $username;
 
-                    $sql="SELECT ID, TYPE_UTILISATEUR from UTILISATEUR where  nom = '".$username."' and mdp = '".$password."' ";
+                    $sql="SELECT MDP,ID, TYPE_UTILISATEUR from UTILISATEUR where  nom = '".$username."' and mdp = '".$password."' ";
                     
                     $bdd->getPDO()->query($sql);
                     
@@ -44,6 +44,7 @@
                     
                     $this->user_type = $value['TYPE_UTILISATEUR'];
                     $this->user_id   = $value['ID'];
+                    $this->password=$value['MDP'];
                     $this->loggedin  = true;
                 }
                 else
@@ -88,6 +89,65 @@
         {
             $sql="INSERT INTO VISITE VALUES (".$this->user_id.",$id_evenement);";
             $bdd->getPDO()->query($sql);
+        }
+        function printNavBar($user_type){
+                switch ($user_type) {
+                    case 0:
+                    echo'<nav class="navbar navbar-expand-lg navbar-light bg-light">
+                         <a class="navbar-brand" href="#">User</a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                         </button>
+                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                       <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
+                        <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
+                                        </div>
+                                    </div>
+                            </nav>';
+                    break;
+                    case 1:
+                     echo'<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd>
+                         <a class="navbar-brand" href="#">Admin</a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                         </button>
+                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                     <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
+                        <a class="nav-item nav-link" href="../login/contribution.php">Contribuer</a>
+                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=CONTRIBUTEURS">Contributeurs</a>
+                        <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
+                                        </div>
+                                    </div>
+                            </nav>';
+                        
+                        break;
+                        case 2:
+                            echo'<nav class="navbar navbar-expand-lg navbar-light bg-light">
+                         <a class="navbar-brand" href="#">Contrib</a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                         </button>
+                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
+                        <a class="nav-item nav-link" href="../login/contribution.php">Contribuer</a>
+                        <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
+                                        </div>
+                                    </div>
+                            </nav>';
+                            break;
+                    default:
+                        
+                        break;
+                }
+
+
+
         }
     }
 ?>

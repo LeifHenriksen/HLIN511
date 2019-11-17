@@ -5,8 +5,8 @@ include '../user_class/user_class.php';
 
 if (isset($_POST['nom']) && isset($_POST['mdp']))
 {
-    $bdd = new DataBase("localhost","HLIN511","omvadmin","openmediavault");
-    $user = new User($_POST['nom'], $_POST['mdp'], $bdd);
+    $bdd = new DataBase("localhost","HLIN511","root","");
+    $user = new User($_POST['nom'], $_POST['mdp'], $bdd,$_SESSION['loggedin']);
     if($user->isLoggedIn())
     {
         $user->initSession();

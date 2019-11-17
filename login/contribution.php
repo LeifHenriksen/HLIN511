@@ -1,21 +1,52 @@
-<form action="validation_contribution.php" method="post">
-         <label for="nom">Nom de l'évenement</label>
-         <input id="nom" name="nom" type="text" /><br />
-         <label for="prenom">Adresse </label>
-         <input id="prenom" name="adresse" type="text" /><br />
-         <label for="latitude">Latitude </label>
-         <input id="latitude" name="Latitude" type="text" placeholder="3.46" />
-         <label for="latitude">Longitude </label>
-         <input id="latitude" name="Latitude" type="text" placeholder="43.65" />
-          <label>Theme</label>
-          <input id="theme" name="theme" type="text" placeholder="jerems34" />
-          <br>
-          <label>Date de l'évenement</label>
-          <input id="mdp" name="mdp" type="text" placeholder="mm/dd/yyyy" />
-          <br>
-          <label>Descriptif de l'évenement</label>
-          <input id="desc" name="desc" type="text" placeholder="Randonée en groupe de 12 personnes autour du pic saint loup ...." />
-          <label>Effectif maximum</label>
-          <input id="eff" name="eff" type="int" placeholder="50" />
-          <br>
-     <input  type="submit" name="test" value="Ajouter l'évenement">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+     <section class="container-fluid">
+    <section class="row justify-content-center">
+      <section class="col-12 col-sm-6 col-md-3">
+        <form class="form-container" method="post"  action="validation_contribution.php" >
+        <div class="form-group">
+          <label for="inputNomEvent">Nom de l'évènement</label>
+          <input type="text" class="form-control" name="nomEv" id="inputNomEvent" placeholder="Entrez le nom de l'évènement">
+        </div>
+        <div class="form-group">
+          <label >Adresse</label>
+          <input type="text" class="form-control" name="adresse" placeholder="51 rue des lilas">
+        </div>
+        <div class="form-group">
+          <label >Latitude</label>
+          <input type="text" class="form-control" name="latitude" placeholder="3.46">
+        </div>
+          <div class="form-group">
+          <label for="latitude">Longitude </label>
+         <input  class="form-control" name="Longitude" type="text" placeholder="43.65" />
+       </div>
+        <div class="form-group">
+          <label >Date de l'évènement</label>
+         <input  class="form-control" name="date" type="text" placeholder="13/11/2019" />
+       </div>
+       <div class="form-group">
+          <label >Descriptif de l'évènement</label>
+         <input  class="form-control" name="Descriptif" type="text" placeholder="rgzegrtheyhej" />
+       </div>
+       <div class="form-group">
+          <label >Effectif maximum</label>
+          <input type="text" class="form-control" name="eff" placeholder="50">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" name="test">Créer l'évènement</button>
+      </form>
+      </section>
+    </section>
+  </section>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

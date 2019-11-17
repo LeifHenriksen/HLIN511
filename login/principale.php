@@ -2,17 +2,14 @@
 <html>
 <head>
 <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 <body>
 <?php
-function print_lien($value, $page)
-{
-    echo "<form method='get' action=$page><input type='submit' value=$value></form>";
-}
-function print_lien_table($value, $page, $nomtable)
-{
-    echo "<form method='get' action=$page><input type='hidden' name='nom_table' value=$nomtable><input type='submit' value=$value></form>";
-}
+include '../user_class/user_class.php';
+include '../bdd_class/bdd_class.php';
+
 session_start();
 if (isset($_GET['deconnexion']))
 {
@@ -21,40 +18,16 @@ if (isset($_GET['deconnexion']))
 }
 else if($_SESSION['username'] !== "")
 {
+    $bdd = new DataBase("localhost","HLIN511","root","");
+    $ActualUser= new User($_SESSION['username'], null, $bdd,$_SESSION['loggedin']);
     $user      = $_SESSION['username'];
     $user_type = $_SESSION['user_type'];
     $acess_type = '';
-    switch ($user_type)
-    {
-    case 0:
-        $acess_type="utilisateur";
-        echo "Bonjour $user, vous êtes connecté(e) en tant que $acess_type.";
-        echo'<form method="get"><input type="submit" name="deconnexion" value="Se déconnecter"></form>';
-        print_lien_table("'Table de Evenements'", '../tables/table.php',"EVENEMENTS");
-		break;
-    case 1:
-        $acess_type="administrateur";
-        echo "Bonjour $user, vous êtes connecté(e) en tant que $acess_type.";
-        echo'<form method="get"><input type="submit" name="deconnexion" value="Se déconnecter"></form>';
-        print_lien_table("'Table de Evenements'", '../tables/table.php',"EVENEMENTS");
-        print_lien("'Creer/Supprimer des evenements'", '../login/contribution.php');
-        print_lien_table("'Table de contributeurs'", '../tables/table.php',"CONTRIBUTEURS");
-        print_lien_table("'Table de visiteurs'", '../tables/table.php',"VISITE");
-        print_lien("'Table de themes'", '../index.php');
-        break;
-    case 2:
-        $acess_type="contributeur";
-        echo "Bonjour $user, vous êtes connecté(e) en tant que $acess_type.";
-        echo'<form method="get"><input type="submit" name="deconnexion" value="Se déconnecter"></form>';
-        print_lien_table("'Table de Evenements'", '../tables/table.php',"EVENEMENTS");
-        print_lien("'Creer/Supprimer des evenements'", '../login/contribution.php');
-        print_lien_table("'Table de visiteurs'", '../tables/table.php',"VISITE");
-        break;
-    default:
-        echo 'erreur';
-        break;
-    }
+    $ActualUser->printNavBar($user_type);
 }
 ?>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>	
