@@ -10,8 +10,7 @@ class Table
         {
             echo 'Resultat vide.';
             return;
-        }
-        echo '<br>';
+        }   
         echo '<table>';
         echo '<thead>
                 <tr>
@@ -57,9 +56,9 @@ class Table
             echo 'Resultat vide.';
             return;
         }
-        echo '<br>';
+        
         echo '<form action="" method="get">';
-        echo '<table>';
+        echo '<table class="table table-hover">';
         echo '<thead>
                 <tr>
                    <th colspan="',$size_col+1,'">',$nomtable,'</th>
@@ -83,7 +82,7 @@ class Table
 		echo "<input type='hidden' name='nom_table' value=$nomtable>";
                 echo '</form>';
     }
-
+ 
     private function print_row_button($ligne, $size, $nombutton)
     {
         echo '<tr>';
@@ -94,7 +93,7 @@ class Table
             echo '</td>';   
         }
         echo '<td>';
-        echo '<button name="'.$nombutton.'" type="submit" value="'.$ligne[0].'">'.$nombutton.'</button>';
+        echo '<button class="btn btn-success"style="width:100%"" name="'.$nombutton.'" type="submit" value="'.$ligne[0].'">'.$nombutton.'</button>';
         echo '</td>'; 
         echo '</tr>';
     }

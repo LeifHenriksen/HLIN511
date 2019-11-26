@@ -98,7 +98,9 @@
                 //23000 == primary key constraint    
                 if($Exception->getCode() == 23000)
                 {
-                    echo 'Vous êtes déjà inscrit à cet événement.';
+                    echo '<div class="alert alert-dark" role="alert">
+  Vous êtes déjà inscrit à cet événement!
+</div>';
                 }
             }
             
@@ -113,7 +115,7 @@
                                          </button>
                              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link active" href="../login/principale.php">Home <span class="sr-only">(current)</span></a>
                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
                         <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
                                         </div>
@@ -128,7 +130,7 @@
                                          </button>
                              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link active" href="../login/principale.php">Home <span class="sr-only">(current)</span></a>
                      <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
                         <a class="nav-item nav-link" href="../contribution/contribution.php">Contribuer</a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=CONTRIBUTEURS">Contributeurs</a>
@@ -146,7 +148,7 @@
                                          </button>
                              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link active" href="../login/principale.php">Home <span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
                         <a class="nav-item nav-link" href="../contribution/contribution.php">Contribuer</a>
                         <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>

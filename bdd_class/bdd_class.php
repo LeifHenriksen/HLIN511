@@ -2,10 +2,10 @@
     class DataBase
     {
         private $db_pdo;
-        private const username   = "e20160001532";
-        private const dbname     = "e20160001532";
-        private const servername = "mysql.etu.umontpellier.fr";
-        private const password   = "1234";
+        private const username   = "root";
+        private const dbname     = "hlin511";
+        private const servername = "localhost";
+        private const password   = "";
         function __construct()
         {
             try
