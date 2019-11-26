@@ -99,7 +99,9 @@
                 //23000 == primary key constraint    
                 if($Exception->getCode() == 23000)
                 {
-                    echo 'Vous êtes déjà inscrit à cet événement.';
+                    echo '<div class="alert alert-dark" role="alert">
+  Vous êtes déjà inscrit à cet événement!
+</div>';
                 }
             }
             
