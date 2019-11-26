@@ -28,15 +28,23 @@
        </div>
         <div class="form-group">
           <label >Date de l'évènement</label>
-         <input  class="form-control" name="date" type="text" placeholder="13/11/2019" />
+         <input  class="form-control" name="date" type="text" placeholder="aaaa-mm-jj" />
        </div>
        <div class="form-group">
+          <label >Theme</label>
+          <input type="text" class="form-control" name="theme" placeholder="Historique">
+        </div>
+       <div class="form-group">
           <label >Descriptif de l'évènement</label>
-         <input  class="form-control" name="Descriptif" type="text" placeholder="rgzegrtheyhej" />
+         <input  class="form-control" name="descriptif" type="text" placeholder="rgzegrtheyhej" />
        </div>
        <div class="form-group">
           <label >Effectif maximum</label>
-          <input type="text" class="form-control" name="effectif" placeholder="50">
+          <input type="text" class="form-control" name="effectif_max" placeholder="50">
+        </div>
+       <div class="form-group">
+          <label >Effectif minimum</label>
+          <input type="text" class="form-control" name="effectif_min" placeholder="50">
         </div>
         <button type="submit" class="btn btn-primary btn-block" name="test">Créer l'évènement</button>
       </form>

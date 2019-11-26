@@ -61,6 +61,7 @@
         }
         function getUserName(){return $this->username;}
         function getUserType(){return $this->user_type;}
+        function getUserID  (){return $this->user_id;}
         function isLoggedIn (){return $this->loggedin;}
         function gotoHome   (){header('Location: principale.php');}
 
@@ -103,6 +104,53 @@
             }
             
         }
+
+        function ajouter_contributeur($id_utilisateur, $bdd)
+        {
+            if($this->user_type == 1)
+            {
+                $sql="UPDATE UTILISATEUR SET TYPE_UTILISATEUR = 2 WHERE ID = $id_utilisateur;";
+                $bdd->getPDO()->query($sql);
+            }
+            else
+            {
+                echo "Vous n'est pas admin";
+            }
+        }
+        
+        function supprimer_evenement($id_evenement, $bdd)
+        {
+            if($this->user_type == 1)
+            {
+                $sql="DELETE FROM VISITE WHERE ID_EV = $id_evenement;";
+                $bdd->getPDO()->query($sql);
+                $sql="DELETE FROM EVENEMENT WHERE ID_EVENT = $id_evenement;";
+                $bdd->getPDO()->query($sql);
+            }
+            else
+            {
+                echo "Vous n'est pas admin";
+            }
+        }
+        function supprimer_inscription($id_evenement, $bdd)
+        {
+            $sql="DELETE FROM VISITE WHERE ID_EV = $id_evenement AND ID_VISITEUR = ".$this->user_id.";";
+            $bdd->getPDO()->query($sql);
+        }
+        function supprimer_utilisateur($id_utilisateur, $bdd)
+        {
+            if($this->user_type == 1)
+            {
+                $sql="DELETE FROM UTILISATEUR WHERE TYPE_UTILISATEUR = 0 AND ID = $id_utilisateur;";
+                $bdd->getPDO()->query($sql);
+            }
+            else
+            {
+                echo "Vous n'est pas admin";
+            }
+        }
+        function supprimer_contribution($id_evenement, $bdd){}
+        
         function printNavBar($user_type){
                 switch ($user_type) {
                     case 0:
@@ -113,8 +161,12 @@
                                          </button>
                              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link active" href="#">Home
+                              <span class="sr-only">(current)</span>
+                        </a>
                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
+                       <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
+                       <a class="nav-item nav-link" href="">Devenir contributeur</a>
                         <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
                                         </div>
                                     </div>
@@ -129,9 +181,14 @@
                              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                         <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                     <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
+                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
+                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=SUP_EVENEMENTS">Suprimer des Évènements</a>
+                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
                         <a class="nav-item nav-link" href="../contribution/contribution.php">Contribuer</a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=CONTRIBUTEURS">Contributeurs</a>
+                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_CONTRIBUTIONS">Mes Contributions</a>
+                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=UTILISATEURS">Ajouter des contributeurs</a>
+                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=SUP_UTILISATEURS">Supprimer des utilisateurs</a>
                         <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
                                         </div>
                                     </div>
@@ -148,7 +205,9 @@
                         <div class="navbar-nav">
                         <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
+                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
                         <a class="nav-item nav-link" href="../contribution/contribution.php">Contribuer</a>
+                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_CONTRIBUTIONS">Mes Contributions</a>
                         <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
                                         </div>
                                     </div>

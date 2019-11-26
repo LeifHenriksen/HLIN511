@@ -2,16 +2,16 @@
     class DataBase
     {
         private $db_pdo;
-        private const username   = "e20160001532";
-        private const dbname     = "e20160001532";
-        private const servername = "mysql.etu.umontpellier.fr";
-        private const password   = "1234";
+        private $username   = "omvadmin";
+        private $dbname     = "HLIN511";
+        private $servername = "localhost";
+        private $password   = "openmediavault";
         function __construct()
         {
             try
             {
-                $this->db_pdo = new PDO("mysql:host=".self::servername.";dbname=".self::dbname,
-                                         self::username, self::password);
+                $this->db_pdo = new PDO("mysql:host=$this->servername;dbname=$this->dbname",
+                                                      $this->username, $this->password);
                 $this->db_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
             catch(PDOException $e)

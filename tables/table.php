@@ -49,6 +49,53 @@ if(isset($_GET["nom_table"]))
         $resultat = $bdd->getPDO()->query($sql);
         Table::printTable("VISITE", $resultat);
         break;
+    case "SUP_EVENEMENTS":
+        if(isset($_GET["Supprimer"]))
+        {
+            $user->supprimer_evenement($_GET["Supprimer"], $bdd);
+        }
+        //aficher seulement si user_type == admin
+        $sql = "SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF FROM EVENEMENT";
+        $resultat = $bdd->getPDO()->query($sql);
+        Table::printTableButton("SUP_EVENEMENTS","Supprimer",$resultat);
+        break;
+    case "MES_EVENEMENTS":
+        if(isset($_GET["Supprimer_inscription"]))
+        {
+            $user->supprimer_inscription($_GET["Supprimer_inscription"], $bdd);
+        }
+        
+        $sql = "SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF 
+                FROM EVENEMENT E, VISITE V
+                WHERE E.ID_EVENT = V.ID_EV
+                AND V.ID_VISITEUR =".$user->getUserID().";";
+        $resultat = $bdd->getPDO()->query($sql);
+        Table::printTableButton("MES_EVENEMENTS","Supprimer_inscription",$resultat);
+        break;
+    case "UTILISATEURS":
+        if(isset($_GET["Convertir_en_contributeur"]))
+        {
+            $user->ajouter_contributeur($_GET["Convertir_en_contributeur"],$bdd);
+        }
+        //aficher seulement si user_type == admin
+        $sql = "SELECT ID, NOM FROM UTILISATEUR WHERE TYPE_UTILISATEUR = 0";
+        $resultat = $bdd->getPDO()->query($sql);
+        Table::printTableButton("UTILISATEURS","Convertir_en_contributeur",$resultat);
+        break;
+    case "SUP_UTILISATEURS":
+        if(isset($_GET["Supprimer_utilisateur"]))
+        {
+            $user->supprimer_utilisateur($_GET["Supprimer_utilisateur"],$bdd);
+        }
+        //aficher seulement si user_type == admin
+        $sql = "SELECT ID, NOM FROM UTILISATEUR WHERE TYPE_UTILISATEUR = 0";
+        $resultat = $bdd->getPDO()->query($sql);
+        Table::printTableButton("SUP_UTILISATEURS","Supprimer_utilisateur",$resultat);
+        break;
+    case "MES_CONTRIBUTIONS":
+        //aficher seulement si user_type == admin || contributeur
+         echo 'a faire';
+        break;
     default:
         echo 'Table non trouve';
     }

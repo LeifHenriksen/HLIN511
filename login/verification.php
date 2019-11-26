@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include '../bdd_class/bdd_class.php';
 include '../user_class/user_class.php';
 
