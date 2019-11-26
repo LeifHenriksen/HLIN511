@@ -18,15 +18,7 @@ if (isset($_GET['deconnexion']))
 }
 else if($_SESSION['username'] != "")
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of 544301e... maj
-    var_dump($_SESSION['username']);
-    var_dump($_SESSION['user_type']);
-    
->>>>>>> parent of 544301e... maj
+
     $bdd = new DataBase();
     $ActualUser= new User($_SESSION['username'], null, $bdd,$_SESSION['loggedin']);
     $user      = $_SESSION['username'];
