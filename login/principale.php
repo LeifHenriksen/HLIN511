@@ -16,9 +16,12 @@ if (isset($_GET['deconnexion']))
     session_unset();
     header("location:login.php");
 }
-else if($_SESSION['username'] !== "")
+else if($_SESSION['username'] != "")
 {
-    $bdd = new DataBase("localhost","HLIN511","root","");
+    var_dump($_SESSION['username']);
+    var_dump($_SESSION['user_type']);
+    
+    $bdd = new DataBase();
     $ActualUser= new User($_SESSION['username'], null, $bdd,$_SESSION['loggedin']);
     $user      = $_SESSION['username'];
     $user_type = $_SESSION['user_type'];

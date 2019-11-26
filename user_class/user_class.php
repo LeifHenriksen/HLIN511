@@ -3,7 +3,7 @@
     {
         private $username;
         private $user_id;
-        private $user_type;
+        private $user_type;//0 = utilisateur, 1 = admin, 2 = contribuiteur
         private $loggedin;
              
         function __construct($username, $password, $bdd, $loggedin)
@@ -88,7 +88,20 @@
         function inscription($id_evenement, $bdd)
         {
             $sql="INSERT INTO VISITE VALUES (".$this->user_id.",$id_evenement);";
-            $bdd->getPDO()->query($sql);
+            
+            try 
+            {
+                $bdd->getPDO()->query($sql);    
+            }
+            catch( PDOException $Exception ) 
+            {
+                //23000 == primary key constraint    
+                if($Exception->getCode() == 23000)
+                {
+                    echo 'Vous êtes déjà inscrit à cet événement.';
+                }
+            }
+            
         }
         function printNavBar($user_type){
                 switch ($user_type) {
@@ -117,7 +130,7 @@
                         <div class="navbar-nav">
                         <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                      <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
-                        <a class="nav-item nav-link" href="../login/contribution.php">Contribuer</a>
+                        <a class="nav-item nav-link" href="../contribution/contribution.php">Contribuer</a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=CONTRIBUTEURS">Contributeurs</a>
                         <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
                                         </div>
@@ -135,7 +148,7 @@
                         <div class="navbar-nav">
                         <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
-                        <a class="nav-item nav-link" href="../login/contribution.php">Contribuer</a>
+                        <a class="nav-item nav-link" href="../contribution/contribution.php">Contribuer</a>
                         <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
                                         </div>
                                     </div>

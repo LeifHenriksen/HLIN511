@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login</title>
+  <title>Contribution</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
@@ -9,10 +9,10 @@
      <section class="container-fluid">
     <section class="row justify-content-center">
       <section class="col-12 col-sm-6 col-md-3">
-        <form class="form-container" method="post"  action="validation_contribution.php" >
+        <form class="form-container" method="post"  action="../contribution/validation_contribution.php" >
         <div class="form-group">
           <label for="inputNomEvent">Nom de l'évènement</label>
-          <input type="text" class="form-control" name="nomEv" id="inputNomEvent" placeholder="Entrez le nom de l'évènement">
+          <input type="text" class="form-control" name="nomEV" id="inputNomEvent" placeholder="Entrez le nom de l'évènement">
         </div>
         <div class="form-group">
           <label >Adresse</label>
@@ -24,7 +24,7 @@
         </div>
           <div class="form-group">
           <label for="latitude">Longitude </label>
-         <input  class="form-control" name="Longitude" type="text" placeholder="43.65" />
+         <input  class="form-control" name="longitude" type="text" placeholder="43.65" />
        </div>
         <div class="form-group">
           <label >Date de l'évènement</label>
@@ -36,7 +36,7 @@
        </div>
        <div class="form-group">
           <label >Effectif maximum</label>
-          <input type="text" class="form-control" name="eff" placeholder="50">
+          <input type="text" class="form-control" name="effectif" placeholder="50">
         </div>
         <button type="submit" class="btn btn-primary btn-block" name="test">Créer l'évènement</button>
       </form>
