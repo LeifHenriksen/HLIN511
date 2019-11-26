@@ -8,3 +8,18 @@ html{
 .navbar{
 	justify-content: between;
 }
+h1{
+	background:url('../images/2109.jpg') no-repeat center center fixed;
+	color:white;
+}
+
+table,
+td {
+    border: 1px solid #333;
+}
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}

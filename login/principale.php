@@ -18,6 +18,12 @@ if (isset($_GET['deconnexion']))
 }
 else if($_SESSION['username'] != "")
 {
+<<<<<<< HEAD
+=======
+  //  var_dump($_SESSION['username']);
+   // var_dump($_SESSION['user_type']);
+    
+>>>>>>> 544301e1e813c892504af3759d1c35e5385fc644
     $bdd = new DataBase();
     $ActualUser= new User($_SESSION['username'], null, $bdd,$_SESSION['loggedin']);
     $user      = $_SESSION['username'];
