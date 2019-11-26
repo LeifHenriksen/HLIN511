@@ -2,10 +2,12 @@
     class DataBase
     {
         private $db_pdo;
+
         private $username   = "omvadmin";
         private $dbname     = "HLIN511";
         private $servername = "localhost";
         private $password   = "openmediavault";
+
         function __construct()
         {
             try

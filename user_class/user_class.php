@@ -161,9 +161,17 @@
                                          </button>
                              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
+<<<<<<< HEAD
+<<<<<<< HEAD
                         <a class="nav-item nav-link active" href="#">Home
                               <span class="sr-only">(current)</span>
                         </a>
+=======
+                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+>>>>>>> parent of 544301e... maj
+=======
+                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+>>>>>>> parent of 544301e... maj
                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
                        <a class="nav-item nav-link" href="">Devenir contributeur</a>
@@ -181,9 +189,16 @@
                              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                         <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+<<<<<<< HEAD
+<<<<<<< HEAD
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=SUP_EVENEMENTS">Suprimer des Évènements</a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
+=======
+=======
+>>>>>>> parent of 544301e... maj
+                     <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
+>>>>>>> parent of 544301e... maj
                         <a class="nav-item nav-link" href="../contribution/contribution.php">Contribuer</a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=CONTRIBUTEURS">Contributeurs</a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_CONTRIBUTIONS">Mes Contributions</a>
