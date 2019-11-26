@@ -99,9 +99,7 @@
                 //23000 == primary key constraint    
                 if($Exception->getCode() == 23000)
                 {
-                    echo '<div class="alert alert-dark" role="alert">
-  Vous êtes déjà inscrit à cet événement!
-</div>';
+                    echo 'Vous êtes déjà inscrit à cet événement.';
                 }
             }
             
@@ -163,13 +161,9 @@
                                          </button>
                              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-<<<<<<< HEAD
                         <a class="nav-item nav-link active" href="#">Home
                               <span class="sr-only">(current)</span>
                         </a>
-=======
-                        <a class="nav-item nav-link active" href="../login/principale.php">Home <span class="sr-only">(current)</span></a>
->>>>>>> 544301e1e813c892504af3759d1c35e5385fc644
                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
                        <a class="nav-item nav-link" href="">Devenir contributeur</a>
@@ -186,15 +180,10 @@
                                          </button>
                              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-<<<<<<< HEAD
                         <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=SUP_EVENEMENTS">Suprimer des Évènements</a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
-=======
-                        <a class="nav-item nav-link active" href="../login/principale.php">Home <span class="sr-only">(current)</span></a>
-                     <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
->>>>>>> 544301e1e813c892504af3759d1c35e5385fc644
                         <a class="nav-item nav-link" href="../contribution/contribution.php">Contribuer</a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=CONTRIBUTEURS">Contributeurs</a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_CONTRIBUTIONS">Mes Contributions</a>
@@ -214,7 +203,7 @@
                                          </button>
                              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="../login/principale.php">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
                         <a class="nav-item nav-link" href="../contribution/contribution.php">Contribuer</a>
