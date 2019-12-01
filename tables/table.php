@@ -10,8 +10,7 @@
 session_start();
 if (isset($_GET['deconnexion']))
 {
-    session_unset();
-    header("Location: ../login/login.php");
+     header("Location: ../login/logout.php");
 }
 include '../bdd_class/bdd_class.php';
 include 'table_class.php';
