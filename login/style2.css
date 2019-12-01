@@ -1,19 +1,48 @@
+
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+
 html{
-  background: url('../images/2109.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
    -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover
 }
+.test{
+	background-image: url(../images/background-2.jpg);
+}
 .navbar{
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size:.9rem;
+	letter-spacing: .1rem;
+	background: rgba(0,0,0,0)!important;
 	justify-content: between;
 }
 
-h1{
-	background:url('../images/2109.jpg') no-repeat center center fixed;
-	color:white;
+.navbar-nav li {
+	padding-right :.7rem;
+}
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link:hover {
+	color: #1ebba3;
 }
 
+.carousel-item{
+	height: 100vh;
+}
+.carousel-caption{
+	padding-bottom: 38vh;
+	text-transform: uppercase;
+}
+.container{
+	padding-top: 38vh;
+}
+
+
+body{
+	overflow-x: hidden;
+	font-family: 'Bebas Neue', cursive;
+}
 table,
 td {
     border: 1px solid #333;
@@ -23,4 +52,7 @@ thead,
 tfoot {
     background-color: #333;
     color: #fff;
+}
+.carousel-item{
+  height: 100vh;
 }

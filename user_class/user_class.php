@@ -156,15 +156,15 @@
         function printNavBar($user_type){
                 switch ($user_type) {
                     case 0:
-                    echo'<nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    echo'<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
                          <a class="navbar-brand" href="#">User</a>
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                         <span class="navbar-toggler-icon"></span>
                                          </button>
-                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                             <div class="collapse navbar-collapse" id="navbarResponsive">
                         <div class="navbar-nav">
            
-                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link active" href="../login/principale.php">Home <span class="sr-only">(current)</span></a>
 
                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
@@ -175,14 +175,14 @@
                             </nav>';
                     break;
                     case 1:
-                     echo'<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd>
-                         <a class="navbar-brand" href="#">Admin</a>
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                     echo'<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top" style="background-color: #e3f2fd>
+                         <a class="navbar-brand" href="#"><img src="../images/admin.png"></a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                         <span class="navbar-toggler-icon"></span>
                                          </button>
-                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                             <div class="collapse navbar-collapse" id="navbarResponsive">
                         <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link active" href="../login/principale.php">Home <span class="sr-only">(current)</span></a>
 
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=SUP_EVENEMENTS">Suprimer des Évènements</a>
@@ -199,14 +199,14 @@
                         
                         break;
                         case 2:
-                            echo'<nav class="navbar navbar-expand-lg navbar-light bg-light">
-                         <a class="navbar-brand" href="#">Contrib</a>
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            echo'<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+                         <a class="navbar-brand" href="#"><img src="../images/play-store-2.png"></a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                         <span class="navbar-toggler-icon"></span>
                                          </button>
-                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                             <div class="collapse navbar-collapse" id="navbarResponsive">
                         <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link active" href="../login/principale.php">Home <span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
                         <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
                         <a class="nav-item nav-link" href="../contribution/contribution.php">Contribuer</a>

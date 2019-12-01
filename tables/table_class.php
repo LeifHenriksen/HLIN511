@@ -12,7 +12,7 @@ class Table
             return;
         }
         
-        echo '<table>';
+        echo '<table style="padding-top:10vh">';
         echo '<thead>
                 <tr>
                    <th colspan="',$size_col,'">',$nomtable,'</th>
@@ -60,7 +60,7 @@ class Table
        
         echo '<form action="" method="get">';
         echo '<table>';
-	echo '<table class="table table-hover">';
+	echo '<table class="table table-hover "">';
         echo '<thead>
                 <tr>
                    <th colspan="',$size_col+1,'">',$nomtable,'</th>

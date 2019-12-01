@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
      <link rel="stylesheet" type="text/css" href="../login/style2.css">
 </head>
-<body>
+<body class="test">
 <?php
 session_start();
 if (isset($_GET['deconnexion']))
@@ -34,12 +34,12 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin']))
 if(isset($_GET["nom_table"]))
 {
     echo '<header>';
-    echo '<title>'.$_GET["nom_table"].'</title>';
-    echo '<link rel="StyleSheet" href="exo10.css">';
+   // echo '<title>'.$_GET["nom_table"].'</title>';
+    echo '<link rel="StyleSheet" href="../login/style2.css">';
     echo '</header>';
     echo '<body>';
-    echo '<h1 class="display-1">'.$_GET["nom_table"].'</h1>';
-    
+   // echo '<h1 class="display-1">'.$_GET["nom_table"].'</h1>';
+    echo '<div class=container>';
     $user = new User(NULL,NULL,NULL,true);
 
     switch($_GET["nom_table"])
@@ -52,7 +52,7 @@ if(isset($_GET["nom_table"]))
         
         $sql = "SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF FROM EVENEMENT";
         $resultat = $bdd->getPDO()->query($sql);
-        Table::printTableButton("EVENEMENTS","Inscription",$resultat);
+        Table::printTableButton("Evènements","Inscription",$resultat);
         break;
     case "CONTRIBUTEURS":
         if(isset($_GET["Supprimer"]))

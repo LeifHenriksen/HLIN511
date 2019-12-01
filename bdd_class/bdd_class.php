@@ -3,10 +3,10 @@
     {
         private $db_pdo;
 
-        private $username   = "omvadmin";
-        private $dbname     = "HLIN511";
+        private $username   = "root";
+        private $dbname     = "hlin511";
         private $servername = "localhost";
-        private $password   = "openmediavault";
+        private $password   = "";
 
         function __construct()
         {
