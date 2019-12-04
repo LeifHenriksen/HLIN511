@@ -7,26 +7,57 @@ html{
   -o-background-size: cover;
   background-size: cover
 }
-.test{
+.bg{
 	background-image: url(../images/background-2.jpg);
 }
+#form1{
+    position: absolute;
+    top: 30vh;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #000;
+    border-collapse: separate; 
+}
+#test{
+    position: absolute;
+    top: 10vh;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #000;
+    border-collapse: separate; 
+}
+
 .navbar{
 	text-transform: uppercase;
 	font-weight: 700;
-	font-size:.9rem;
+	font-size:1.2rem;
 	letter-spacing: .1rem;
 	background: rgba(0,0,0,0)!important;
 	justify-content: between;
 }
-
+.collapse navbar-collapse{
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size:1.2rem;
+	letter-spacing: .1rem;
+	background: rgba(0,0,0,0)!important;
+	justify-content: between;
+}
 .navbar-nav li {
 	padding-right :.7rem;
 }
-.navbar-light .navbar-nav .nav-link.active,
-.navbar-light .navbar-nav .nav-link:hover {
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link:hover {
 	color: #1ebba3;
 }
-
+.icon-bar
+{
+  background:green !important; 
+}
+.navbar-toggle
+{
+  background:yellow !important; /
+}
 .carousel-item{
 	height: 100vh;
 }
@@ -37,7 +68,19 @@ html{
 .container{
 	padding-top: 38vh;
 }
+.dropdown-menu{
+	background: rgba(0,0,0,0)!important;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size:1.2rem;
+	letter-spacing: .1rem;
+	border-style:none;
 
+
+}
+p{
+	color:;
+}
 
 body{
 	overflow-x: hidden;
@@ -55,4 +98,25 @@ tfoot {
 }
 .carousel-item{
   height: 100vh;
+}
+
+
+@media screen and (max-width: 400px)
+{
+	.navbar{
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size:.4rem;
+	letter-spacing: .1rem;
+	background: rgba(0,0,0,0)!important;
+	justify-content: between;
+}
+
+	img{
+		width: 320px;
+		height: 830px;
+	}
+.d-block w-100{
+content: url(../images/backgroundm.jpg);	;
+}
 }

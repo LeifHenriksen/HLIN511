@@ -1,15 +1,36 @@
+<?php
+include '../user_class/user_class.php';
+include '../bdd_class/bdd_class.php';
+
+session_start();
+if (isset($_GET['deconnexion']))
+{
+    session_unset();
+    header("location:login.php");
+}
+else if($_SESSION['username'] != "")
+{
+
+    $bdd = new DataBase();
+    $ActualUser= new User($_SESSION['username'], null, $bdd,$_SESSION['loggedin']);
+    $user      = $_SESSION['username'];
+    $user_type = $_SESSION['user_type'];
+    $acess_type = '';
+    $ActualUser->printNavBar($user_type);
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <title>Contribution</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="../login/styles.css">
+  <link rel="stylesheet" type="text/css" href="../login/style2.css">
 </head>
-<body>
+<body class="test">
      <section class="container-fluid">
     <section class="row justify-content-center">
       <section class="col-12 col-sm-6 col-md-3">
-        <form class="form-container" method="post"  action="../contribution/validation_contribution.php" style="width: 100%;" >
+        <form id="test"class="form-container" method="post"  action="../contribution/validation_contribution.php" style="width: 100%;" >
         <div class="form-group">
           <label for="inputNomEvent">Nom de l'évènement</label>
           <input type="text" class="form-control" name="nomEV" id="inputNomEvent" placeholder="Entrez le nom de l'évènement">

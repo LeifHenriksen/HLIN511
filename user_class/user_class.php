@@ -99,7 +99,7 @@
                 //23000 == primary key constraint    
                 if($Exception->getCode() == 23000)
                 {
-                    echo '<div class="alert alert-dark" role="alert">
+                    echo '<div class="alert alert-danger" role="alert">
   Vous êtes déjà inscrit à cet événement!
 </div>';
                 }
@@ -156,65 +156,109 @@
         function printNavBar($user_type){
                 switch ($user_type) {
                     case 0:
-                    echo'<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-                         <a class="navbar-brand" href="#">User</a>
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="navbar-toggler-icon"></span>
-                                         </button>
-                             <div class="collapse navbar-collapse" id="navbarResponsive">
-                        <div class="navbar-nav">
-           
-                        <a class="nav-item nav-link active" href="../login/principale.php">Home <span class="sr-only">(current)</span></a>
-
-                       <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
-                       <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
-                       <a class="nav-item nav-link" href="">Devenir contributeur</a>
-                        <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
-                                        </div>
-                                    </div>
-                            </nav>';
+                    echo'<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+             <a class="nav-item nav-link active" href="../login/principale.php">Accueil <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Évènements
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Liste des évènements</a>
+         <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link" href="">Devenir contributeur</a>
+        </li>
+        <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
+    </ul>
+  </div>
+</nav>';
                     break;
                     case 1:
-                     echo'<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top" style="background-color: #e3f2fd>
-                         <a class="navbar-brand" href="#"><img src="../images/admin.png"></a>
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="navbar-toggler-icon"></span>
-                                         </button>
-                             <div class="collapse navbar-collapse" id="navbarResponsive">
-                        <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="../login/principale.php">Home <span class="sr-only">(current)</span></a>
-
-                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
-                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=SUP_EVENEMENTS">Suprimer des Évènements</a>
-                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
-                        <a class="nav-item nav-link" href="../contribution/contribution.php">Contribuer</a>
-                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=CONTRIBUTEURS">Contributeurs</a>
-                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_CONTRIBUTIONS">Mes Contributions</a>
-                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=UTILISATEURS">Ajouter des contributeurs</a>
-                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=SUP_UTILISATEURS">Supprimer des utilisateurs</a>
-                        <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
-                                        </div>
-                                    </div>
-                            </nav>';
+                     echo'<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+             <a class="nav-item nav-link active" href="../login/principale.php">Accueil <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Évènements
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Liste des évènements</a>
+         <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
+           <a class="nav-item nav-link" href="../tables/table.php?nom_table=SUP_EVENEMENTS">Supprimer des Évènements</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Contribution
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+         <a class="nav-item nav-link" href="../contribution/contribution.php">Contribuer</a>
+         <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_CONTRIBUTIONS">Mes Contributions</a>
+          <a class="nav-item nav-link" href="../tables/table.php?nom_table=UTILISATEURS">Ajouter des contributeurs</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link" href="../tables/table.php?nom_table=SUP_UTILISATEURS">Supprimer des utilisateurs</a>
+        </li>
+        <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
+    </ul>
+  </div>
+</nav>';
                         
                         break;
                         case 2:
-                            echo'<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-                         <a class="navbar-brand" href="#"><img src="../images/play-store-2.png"></a>
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="navbar-toggler-icon"></span>
-                                         </button>
-                             <div class="collapse navbar-collapse" id="navbarResponsive">
-                        <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="../login/principale.php">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Évènements</a>
-                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
-                        <a class="nav-item nav-link" href="../contribution/contribution.php">Contribuer</a>
-                        <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_CONTRIBUTIONS">Mes Contributions</a>
-                        <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
-                                        </div>
-                                    </div>
-                            </nav>';
+                            echo'<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+             <a class="nav-item nav-link active" href="../login/principale.php">Accueil <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Évènements
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Liste des évènements</a>
+         <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Contribution
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+         <a class="nav-item nav-link" href="../contribution/contribution.php">Contribuer</a>
+         <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_CONTRIBUTIONS">Mes Contributions</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link" href="../tables/table.php?nom_table=SUP_UTILISATEURS">Supprimer des utilisateurs</a>
+        </li>
+        <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
+    </ul>
+  </div>
+</nav>';
                             break;
                     default:
                         

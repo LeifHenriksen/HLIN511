@@ -4,6 +4,7 @@
 <title></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
      <link rel="stylesheet" type="text/css" href="style2.css">
+      <meta name="viewport" content="width=device-width"/>
 </head>
 <body data-spy="scroll" data-targer="#navbarresponsive">
 <?php
@@ -35,24 +36,24 @@ else if($_SESSION['username'] != "")
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="../images/background.jpg" alt="First slide">
+      <img  class="d-block w-100" src="../images/dark_mountains.jpg" alt="First slide">
           <div class="carousel-caption text-center">
         <h1>Randonnée</h1>
-        <a class="btn btn-outline-light btn-lg" href="#">Voir</a>
+        <a class="btn btn-outline-light btn-lg" href="../tables/table.php?nom_table=RANDONNEE">Voir</a>
     </div>
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="../images/background-2.jpg" alt="Second slide">
         <div class="carousel-caption text-center">
         <h1>Ski</h1>
-        <a class="btn btn-outline-light btn-lg" href="#">Voir</a>
+        <a class="btn btn-outline-light btn-lg"  href="../tables/table.php?nom_table=SKI">Voir</a>
     </div>
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="../images/background3.jpg" alt="Third slide">
         <div class="carousel-caption text-center">
         <h1>Surf</h1>
-        <a class="btn btn-outline-light btn-lg" href="#">Voir</a>
+        <a class="btn btn-outline-light btn-lg" href="../tables/table.php?nom_table=SURF">Voir</a>
     </div>
     </div>
   </div>

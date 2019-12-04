@@ -7,16 +7,109 @@ html{
 }
 
 
-form{
-    position: absolute;
-    top: 10vh;
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px #000;
-    border-collapse: separate; 
+
+
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+
+html{
+  -webkit-background-size: cover;
+   -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover
 }
 
+.test{
+  background-image: url(../images/background-2.jpg);
+}
+.navbar{
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size:1.2rem;
+  letter-spacing: .1rem;
+  background: rgba(0,0,0,0)!important;
+  justify-content: between;
+}
+.collapse navbar-collapse{
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size:1.2rem;
+  letter-spacing: .1rem;
+  background: rgba(0,0,0,0)!important;
+  justify-content: between;
+}
+.navbar-nav li {
+  padding-right :.7rem;
+}
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #1ebba3;
+}
+.icon-bar
+{
+  background:green !important; /*Whatever colour you want for icon lines*/
+}
+.navbar-toggle
+{
+  background:yellow !important; /*Whatever colour you want for background */
+}
 .carousel-item{
-  height: 50vh;
+  height: 100vh;
+}
+.carousel-caption{
+  padding-bottom: 38vh;
+  text-transform: uppercase;
+}
+.container{
+  padding-top: 38vh;
+}
+.dropdown-menu{
+  background: rgba(0,0,0,0)!important;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size:1.2rem;
+  letter-spacing: .1rem;
+
+
+}
+p{
+  color:;
+}
+
+body{
+  overflow-x: hidden;
+  font-family: 'Bebas Neue', cursive;
+}
+table,
+td {
+    border: 1px solid #333;
+}
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
+.carousel-item{
+  height: 100vh;
+}
+
+
+@media screen and (max-width: 400px)
+{
+  .navbar{
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size:.4rem;
+  letter-spacing: .1rem;
+  background: rgba(0,0,0,0)!important;
+  justify-content: between;
+}
+
+  img{
+    width: 320px;
+    height: 830px;
+  }
+.d-block w-100{
+content: url(../images/backgroundm.jpg);  ;
+}
 }

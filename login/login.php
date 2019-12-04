@@ -6,17 +6,17 @@ if (!(empty($_SESSION['username'])))
 } 
 ?>
 <!DOCTYPE html>
-<html>
+<html class ="bg">
 <head>
 	<title>Login</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 <body>
 	<section class="container-fluid">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-3">
-				<form class="form-container" method="post"  action="verification.php" >
+				<form id="form1" class="form-container" method="post"  action="verification.php" >
 				<div class="form-group">
 					<label for="inputLogin">Nom d'utilisateur</label>
 					<input type="text" class="form-control" name="nom" id="inputLogin" placeholder="Entrez votre nom d'utilisateur">

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
 <title></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
      <link rel="stylesheet" type="text/css" href="../login/style2.css">
 </head>
-<body class="test">
+<body class="bg">
 <?php
 session_start();
 if (isset($_GET['deconnexion']))
@@ -20,9 +20,7 @@ if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin']))
 {	
     header('Location: ../login/login.php');
 } 
-?>
-<html>
-<?php
+
     $bdd = new DataBase();
     $ActualUser= new User($_SESSION['username'], null, $bdd,$_SESSION['loggedin']);
     $user      = $_SESSION['username'];
@@ -51,7 +49,7 @@ if(isset($_GET["nom_table"]))
         
         $sql = "SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF FROM EVENEMENT";
         $resultat = $bdd->getPDO()->query($sql);
-        Table::printTableButton("Evènements","Inscription",$resultat);
+        Table::printTableButton("EVENEMENTS","Inscription",$resultat);
         break;
     case "CONTRIBUTEURS":
         if(isset($_GET["Supprimer"]))
@@ -111,11 +109,40 @@ if(isset($_GET["nom_table"]))
         $resultat = $bdd->getPDO()->query($sql);
         Table::printTableButton("SUP_UTILISATEURS","Supprimer_utilisateur",$resultat);
         break;
-    case "MES_CONTRIBUTIONS":
+         case "MES_CONTRIBUTIONS":
         //aficher seulement si user_type == admin || contributeur
          echo 'a faire';
         break;
-    default:
+    case "SKI" :
+        if(isset($_GET["Inscription"] ))
+        {
+            $user->inscription($_GET["Inscription"], $bdd);
+        }
+            
+        $sql = "SELECT NOM_EVENT, ADRESSE, THEME, DESCRIPTIF FROM EVENEMENT WHERE NOM_EVENT LIKE 'SK%'";
+                  
+        $resultat = $bdd->getPDO()->query($sql);
+        Table::printTableButton("EVENEMENTS","Inscription",$resultat);
+        break;
+        case 'RANDONNEE':
+        if(isset($_GET["Inscription"] ))
+        {
+            $user->inscription($_GET["Inscription"], $bdd);
+        }
+                 $sql = "SELECT NOM_EVENT, ADRESSE, THEME, DESCRIPTIF FROM EVENEMENT WHERE NOM_EVENT LIKE 'RAN%'";
+        $resultat = $bdd->getPDO()->query($sql);
+        Table::printTableButton("EVENEMENTS","Inscription",$resultat);
+                break;
+        case 'SURF':
+        if(isset($_GET["Inscription"] ))
+        {
+            $user->inscription($_GET["Inscription"], $bdd);
+        }
+                 $sql = "SELECT NOM_EVENT, ADRESSE, THEME, DESCRIPTIF FROM EVENEMENT WHERE NOM_EVENT LIKE 'SU%'";
+        $resultat = $bdd->getPDO()->query($sql);
+        Table::printTableButton("EVENEMENTS","Inscription",$resultat);
+                break;       
+        default:
         echo 'Table non trouve';
     }
 }
@@ -129,4 +156,4 @@ else
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
-</html>
+
