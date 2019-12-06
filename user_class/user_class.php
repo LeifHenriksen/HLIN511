@@ -202,6 +202,7 @@
           <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Liste des évènements</a>
          <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
            <a class="nav-item nav-link" href="../tables/table.php?nom_table=SUP_EVENEMENTS">Supprimer des Évènements</a>
+           <a class="nav-item nav-link" href="../map/map.php">Carte des évènements</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -217,6 +218,8 @@
       <li class="nav-item">
         <a class="nav-item nav-link" href="../tables/table.php?nom_table=SUP_UTILISATEURS">Supprimer des utilisateurs</a>
         </li>
+        <form method="get"><button type="submit" class="btn btn-light" name="connecter">
+        Se connecter </button></form>
         <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
     </ul>
   </div>

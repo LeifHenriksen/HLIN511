@@ -33,8 +33,12 @@ if (isset($_POST['nomEV'])      && isset($_POST['adresse'])
                 echo $sql;
             }
 
-            if(!isset($e))
-                echo "Evenement ajouté.";
+            if(!isset($e)){
+                echo '<div class="alert alert-danger" role="alert">
+  Evenement ajouté !
+</div>';
+//header('Location: ../login/principale.php');
+        }
         }
         else
         {

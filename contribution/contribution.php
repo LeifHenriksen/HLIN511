@@ -26,11 +26,11 @@ else if($_SESSION['username'] != "")
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="../login/style2.css">
 </head>
-<body class="test">
+<body class="bg">
      <section class="container-fluid">
     <section class="row justify-content-center">
       <section class="col-12 col-sm-6 col-md-3">
-        <form id="test"class="form-container" method="post"  action="../contribution/validation_contribution.php" style="width: 100%;" >
+        <form id="bg"class="form-container" method="post"  action="../contribution/validation_contribution.php" style="width: 100%;" >
         <div class="form-group">
           <label for="inputNomEvent">Nom de l'évènement</label>
           <input type="text" class="form-control" name="nomEV" id="inputNomEvent" placeholder="Entrez le nom de l'évènement">
