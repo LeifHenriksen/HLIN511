@@ -135,7 +135,7 @@
         
         function supprimer_evenement($id_evenement, $bdd)
         {
-            if($this->user_type == 1)
+            if($this->user_type > 0)
             {
                 $sql="DELETE FROM VISITE WHERE ID_EV = $id_evenement;";
                 $bdd->getPDO()->query($sql);

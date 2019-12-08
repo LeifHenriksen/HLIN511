@@ -11,12 +11,12 @@ if (isset($_POST['nomEV'])      && isset($_POST['adresse'])
         {
             $bdd = new DataBase();
             $sql="
-            INSERT INTO EVENEMENT (NOM_EVENT, ADRESSE, 
+            INSERT INTO EVENEMENT (ID_CREATEUR, NOM_EVENT, ADRESSE, 
                                    LONGITUDE, LATITUDE, 
                                    THEME, DATE_EV, DESCRIPTIF, 
                                    EFFECTIF_MAX, EFFECTIF_MIN)
             VALUES 
-           ('".$_POST['nomEV']  ."','".$_POST['adresse']."'
+           (".$_SESSION['user_id'].",'".$_POST['nomEV']  ."','".$_POST['adresse']."'
             ,".$_POST['longitude'].",".$_POST['latitude'].",
             '".$_POST['theme']."','"   .$_POST['date']."', 
             '".$_POST['descriptif']."',".$_POST['effectif_max']."

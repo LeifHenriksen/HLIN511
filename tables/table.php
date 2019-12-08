@@ -111,9 +111,18 @@ if(isset($_GET["nom_table"]))
         $resultat = $bdd->getPDO()->query($sql);
         Table::printTableButton("SUP_UTILISATEURS","Supprimer_utilisateur",$resultat);
         break;
-         case "MES_CONTRIBUTIONS":
-        //aficher seulement si user_type == admin || contributeur
-         echo 'a faire';
+    case "MES_CONTRIBUTIONS":
+         //aficher seulement si user_type == admin || contributeur
+        if(isset($_GET["Supprimer"]))
+        {
+            $user->supprimer_evenement($_GET["Supprimer"], $bdd);
+        }
+        //aficher seulement si user_type == admin
+        $sql = "SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF 
+                FROM EVENEMENT
+                WHERE ID_CREATEUR = ".$user->getUserID();
+        $resultat = $bdd->getPDO()->query($sql);
+        Table::printTableButton("MES_CONTRIBUTIONS","Supprimer",$resultat);
         break;
     case "SKI" :
         if(isset($_GET["Inscription"] ))
