@@ -93,9 +93,11 @@ if(isset($_GET["nom_table"]))
         if(isset($_GET["Convertir_en_contributeur"]))
         {
             $user->ajouter_contributeur($_GET["Convertir_en_contributeur"],$bdd);
+            $user->supprimer_demande_contributeur($_GET["Convertir_en_contributeur"],$bdd);
         }
         //aficher seulement si user_type == admin
-        $sql = "SELECT ID, NOM FROM UTILISATEUR WHERE TYPE_UTILISATEUR = 0";
+        $sql = "SELECT ID, NOM, LM FROM UTILISATEUR, DEMANDE_CONTRIBUTEUR
+                                   WHERE ID_UTILISATEUR = ID";
         $resultat = $bdd->getPDO()->query($sql);
         Table::printTableButton("UTILISATEURS","Convertir_en_contributeur",$resultat);
         break;

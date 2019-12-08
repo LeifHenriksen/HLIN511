@@ -119,6 +119,19 @@
                 echo "Vous n'est pas admin";
             }
         }
+
+        function supprimer_demande_contributeur($id_utilisateur, $bdd)
+        {
+            if($this->user_type == 1)
+            {
+                $sql="DELETE FROM DEMANDE_CONTRIBUTEUR WHERE ID_UTILISATEUR = $id_utilisateur;";
+                $bdd->getPDO()->query($sql);
+            }
+            else
+            {
+                echo "Vous n'est pas admin";
+            }
+        }
         
         function supprimer_evenement($id_evenement, $bdd)
         {
@@ -255,9 +268,6 @@
          <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_CONTRIBUTIONS">Mes Contributions</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-item nav-link" href="../tables/table.php?nom_table=SUP_UTILISATEURS">Supprimer des utilisateurs</a>
-        </li>
         <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
     </ul>
   </div>
