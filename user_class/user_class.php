@@ -247,6 +247,9 @@
       <li class="nav-item">
         <a class="nav-item nav-link" href="../tables/table.php?nom_table=SUP_UTILISATEURS">Supprimer des utilisateurs</a>
         </li>
+<li class="nav-item">
+        <a class="nav-item nav-link" href="../tables/table.php?nom_table=CONTRIBUTEURS">Supprimer des contributeurs</a>
+        </li>
         <form method="get"><button type="submit" class="btn btn-light" name="connecter">
         Se connecter </button></form>
         <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
