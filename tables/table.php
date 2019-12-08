@@ -89,6 +89,16 @@ if(isset($_GET["nom_table"]))
         $resultat = $bdd->getPDO()->query($sql);
         Table::printTableButton("MES_EVENEMENTS","Supprimer_inscription",$resultat);
         break;
+    case "THEMES":
+        if(isset($_GET["Supprimer"]))
+        {
+            $user->supprimerTheme($_GET["Supprimer"],$bdd);
+        }
+        //aficher seulement si user_type == admin
+        $sql = "SELECT * FROM THEME";
+        $resultat = $bdd->getPDO()->query($sql);
+        Table::printTableButton("THEMES","Supprimer",$resultat);
+        break;
     case "UTILISATEURS":
         if(isset($_GET["Convertir_en_contributeur"]))
         {

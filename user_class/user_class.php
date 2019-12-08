@@ -132,6 +132,20 @@
                 echo "Vous n'est pas admin";
             }
         }
+
+        function supprimerTheme($nom_theme, $bdd)
+        {
+            if($this->user_type == 1)
+            {
+                echo $nom_theme;
+                $sql="DELETE FROM THEME WHERE NOM_THEME LIKE '$nom_theme';";
+                $bdd->getPDO()->query($sql);
+            }
+            else
+            {
+                echo "Vous n'est pas admin";
+            }
+        }
         
         function supprimer_evenement($id_evenement, $bdd)
         {
@@ -225,6 +239,8 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
          <a class="nav-item nav-link" href="../contribution/contribution.php">Contribuer</a>
          <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_CONTRIBUTIONS">Mes Contributions</a>
+          <a class="nav-item nav-link" href="../tables/table.php?nom_table=THEMES">Themes</a>
+          <a class="nav-item nav-link" href="../contribution/ajouter_theme.php">Ajouter theme</a>
           <a class="nav-item nav-link" href="../tables/table.php?nom_table=UTILISATEURS">Ajouter des contributeurs</a>
         </div>
       </li>
