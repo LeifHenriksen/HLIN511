@@ -176,8 +176,8 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-item nav-link" href="">Devenir contributeur</a>
-        </li>
+        <a class="nav-item nav-link" href="../user_class/devenir_contributeur.php">Devenir contributeur</a>
+      </li>
         <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
     </ul>
   </div>
