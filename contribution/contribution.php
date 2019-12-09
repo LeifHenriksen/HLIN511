@@ -5,8 +5,7 @@ include '../bdd_class/bdd_class.php';
 session_start();
 if (isset($_GET['deconnexion']))
 {
-    session_unset();
-    header("location:login.php");
+    header("location:../login/logout.php");
 }
 else if($_SESSION['username'] != "")
 {
