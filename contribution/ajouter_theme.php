@@ -35,17 +35,19 @@ else
         <form id="bg"class="form-container" method="post"  action="../contribution/valider_theme.php" style="width: 100%;" >
         <div class="form-group">
           <label for="inputNomEvent">Theme père</label>
-          <input type="text" class="form-control" name="theme_pere" id="theme_pere" placeholder="SPORTS">
+          <input type="text" class="form-control" name="theme_pere" id="theme_pere" placeholder="SPORTS" onkeyup="showHint(this.value,'THEME','NOM_THEME')">
           </div>
           <div class="form-group">
            <label >Nom theme</label>
-          <input  class="form-control" name="nom_theme" type="text" placeholder="Ski" />
+          <input  class="form-control" name="nom_theme" type="text" placeholder="Ski" onkeyup="showHint(this.value,'THEME','NOM_THEME')"/>
          </div>
+          <p>Suggestions: <span id="txtHint"></span></p>
         <button type="submit" class="btn btn-primary btn-block" name="test">Ajouter theme</button>
       </form>
       </section>
     </section>
   </section>
+  <script src='../scripts/autocomplete.js'></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

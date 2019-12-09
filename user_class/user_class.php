@@ -137,7 +137,6 @@
         {
             if($this->user_type == 1)
             {
-                echo $nom_theme;
                 $sql="DELETE FROM THEME WHERE NOM_THEME LIKE '$nom_theme';";
                 $bdd->getPDO()->query($sql);
             }

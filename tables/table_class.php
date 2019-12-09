@@ -12,7 +12,7 @@ class Table
             return;
         }
         
-        echo '<table style="padding-top:10vh">';
+        echo '<table style="padding-top:10vh" id = "table_generique">';
         echo '<thead>
                 <tr>
                    <th colspan="',$size_col,'">',$nomtable,'</th>
@@ -59,8 +59,7 @@ class Table
         }
        
         echo '<form action="" method="get">';
-        echo '<table>';
-	echo '<table class="table table-hover "">';
+	echo '<table class="table table-hover" id = "table_generique">';
         echo '<thead>
                 <tr>
                    <th colspan="',$size_col+1,'">',$nomtable,'</th>
@@ -106,15 +105,15 @@ class Table
         //i + 2 car une ligne contient 2 keys
         for($i = 0; $i<$size; $i = $i+2) 
         {
-            echo '<td>';
+            echo '<th onclick=sortTable('.$i/2 .')>';
             echo $ligne[$i];    
-            echo '</td>';   
+            echo '</th>';   
         }
         if($button)
         {
-            echo '<td>';
+            echo '<th>';
             echo 'Action';    
-            echo '</td>';   
+            echo '</th>';   
         }
         echo '</tr>';
     }
