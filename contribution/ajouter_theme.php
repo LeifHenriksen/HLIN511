@@ -41,8 +41,9 @@ else
            <label >Nom theme</label>
           <input  class="form-control" name="nom_theme" type="text" placeholder="Ski" onkeyup="showHint(this.value,'THEME','NOM_THEME')"/>
          </div>
+         <div class="alert alert-success" role="alert">
           <p>Suggestions: <span id="txtHint"></span></p>
-        <button type="submit" class="btn btn-primary btn-block" name="test">Ajouter theme</button>
+        <button type="submit" class="btn btn-primary btn-block" name="test">Ajouter theme</button></div>
       </form>
       </section>
     </section>

@@ -27,7 +27,7 @@ if (!(empty($_SESSION['username'])))
 				</div>
 				<button type="submit" class="btn btn-primary btn-block" name="test">Connexion</button>
 				<br>
-					<a href="inscription.html" >Nouvel utilisateur ? 
+					<a href="inscription.php" >Nouvel utilisateur ? 
 											Créer un compte</a>
 			</form>
 			</section>

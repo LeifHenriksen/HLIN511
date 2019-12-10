@@ -182,7 +182,7 @@
         function printNavBar($user_type){
                 switch ($user_type) {
                     case 0:
-                    echo'<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                    echo'<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <a class="navbar-brand" href="#"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
