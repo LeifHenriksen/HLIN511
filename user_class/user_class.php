@@ -254,6 +254,10 @@
         <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
     </ul>
   </div>
+    <form method ="post" class="form-inline" action="../tables/table.php?nom_table=SEARCH">
+    <input class="form-control mr-sm-2" type="text" name="search" placeholder="Chercher par thème" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" name="chercher" type="submit">Chercher</button>
+  </form>
 </nav>';
                         
                         break;

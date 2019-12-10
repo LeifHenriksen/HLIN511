@@ -27,6 +27,9 @@ else if($_SESSION['username'] != "")
     $acess_type = '';
     $ActualUser->printNavBar($user_type);
 }
+if(isset($_POST["chercher"])){
+  header("location:chercher.php");
+}
 ?>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
