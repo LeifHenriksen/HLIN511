@@ -10,7 +10,7 @@ if (isset($_POST['login']) && isset($_POST['mdp']))
         if($mdpv!=$_POST['mdp']){ $nameErr="Les mots de passe ne correspondent pas!";} 
             $login=$_POST['login'];
             $bdd = new DataBase();
-            $verif="SELECT count(*) as test from utilisateur where NOM like '%$login%'";
+            $verif="SELECT count(*) as test from UTILISATEUR where NOM like '%$login%'";
            foreach ($bdd->getPDO()->query($verif) as $row);
 
                 if($row['test']!=0)
