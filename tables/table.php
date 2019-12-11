@@ -2,14 +2,20 @@
 <html >
 <head>
 <title></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-     <link rel="stylesheet" type="text/css" href="../login/style2.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="../login/style2.css">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+      <style>
+      th {
+          cursor: pointer;
+      }
+      </style>
 <style>
-th {
-  cursor: pointer;
-}
-</style>
+.checked {
+          cursor: pointer;
+          color: orange;
+ }
+      </style>
 </head>
 <body class="bg">
 <?php
@@ -24,7 +30,7 @@ include '../user_class/user_class.php';
 
 if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) 
 {	
-    header('Location: ../login/login.php');
+     header("Location: ../login/logout.php");
 } 
 
     $bdd = new DataBase();
@@ -42,7 +48,7 @@ if(isset($_GET["nom_table"]))
     echo '<link rel="StyleSheet" href="../login/style2.css">';
     echo '</header>';
     echo '<body>';
-   // echo '<h1 class="display-1">'.$_GET["nom_table"].'</h1>';
+    // echo '<h1 class="display-1">'.$_GET["nom_table"].'</h1>';
     echo '<div class=container>';
     $user = new User(NULL,NULL,NULL,true);
 
@@ -54,7 +60,7 @@ if(isset($_GET["nom_table"]))
             $user->inscription($_GET["Inscription"], $bdd);
         }
         
-        $sql = "SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF FROM EVENEMENT";
+        $sql = "SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF, DATE_EV FROM EVENEMENT";
         $resultat = $bdd->getPDO()->query($sql);
         Table::printTableButton("EVENEMENTS","Inscription",$resultat);
         break;
@@ -88,13 +94,13 @@ if(isset($_GET["nom_table"]))
         {
             $user->supprimer_inscription($_GET["Supprimer_inscription"], $bdd);
         }
-        
-        $sql = "SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF 
+
+        $sql = "SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF, DATE_EV 
                 FROM EVENEMENT E, VISITE V
                 WHERE E.ID_EVENT = V.ID_EV
                 AND V.ID_VISITEUR =".$user->getUserID().";";
         $resultat = $bdd->getPDO()->query($sql);
-        Table::printTableButton("MES_EVENEMENTS","Supprimer_inscription",$resultat);
+        Table::printTableButtonEtEtoiles("MES_EVENEMENTS","Supprimer_inscription",$resultat, $bdd);
         break;
     case "THEMES":
         if(isset($_GET["Supprimer"]))
@@ -129,7 +135,7 @@ if(isset($_GET["nom_table"]))
         Table::printTableButton("SUP_UTILISATEURS","Supprimer_utilisateur",$resultat);
         break;
     case "MES_CONTRIBUTIONS":
-         //aficher seulement si user_type == admin || contributeur
+        //aficher seulement si user_type == admin || contributeur
         if(isset($_GET["Supprimer"]))
         {
             $user->supprimer_evenement($_GET["Supprimer"], $bdd);
@@ -152,37 +158,37 @@ if(isset($_GET["nom_table"]))
         $resultat = $bdd->getPDO()->query($sql);
         Table::printTableButton("EVENEMENTS","Inscription",$resultat);
         break;
-        case 'RANDONNEE':
+    case 'RANDONNEE':
         if(isset($_GET["Inscription"] ))
         {
             $user->inscription($_GET["Inscription"], $bdd);
         }
-                 $sql = "SELECT NOM_EVENT, ADRESSE, THEME, DESCRIPTIF FROM EVENEMENT WHERE NOM_EVENT LIKE 'RAN%'";
+        $sql = "SELECT NOM_EVENT, ADRESSE, THEME, DESCRIPTIF FROM EVENEMENT WHERE NOM_EVENT LIKE 'RAN%'";
         $resultat = $bdd->getPDO()->query($sql);
         Table::printTableButton("EVENEMENTS","Inscription",$resultat);
-                break;
-        case 'SURF':
+        break;
+    case 'SURF':
         if(isset($_GET["Inscription"] ))
         {
             $user->inscription($_GET["Inscription"], $bdd);
         }
-                 $sql = "SELECT NOM_EVENT, ADRESSE, THEME, DESCRIPTIF FROM EVENEMENT WHERE NOM_EVENT LIKE 'SU%'";
+        $sql = "SELECT NOM_EVENT, ADRESSE, THEME, DESCRIPTIF FROM EVENEMENT WHERE NOM_EVENT LIKE 'SU%'";
         $resultat = $bdd->getPDO()->query($sql);
         Table::printTableButton("EVENEMENTS","Inscription",$resultat);
-                break;
-        case 'SEARCH':
+        break;
+    case 'SEARCH':
 
-if (isset($_POST["search"]))
-{
-      $theme=$_POST["search"];
+        if (isset($_POST["search"]))
+        {
+            $theme=$_POST["search"];
       
 
-                 $sql = "SELECT date_ev,NOM_EVENT, ADRESSE, THEME, DESCRIPTIF FROM EVENEMENT WHERE THEME LIKE '%$theme%' or DATE_EV like '%$theme%'";
-        $resultat = $bdd->getPDO()->query($sql);
-        Table::printTableButton("EVENEMENTS","Inscription",$resultat);
-    }
-    break;
-        default:
+            $sql = "SELECT NOM_EVENT, ADRESSE, THEME, DESCRIPTIF, DATE_EV FROM EVENEMENT WHERE THEME LIKE '%$theme%' or DATE_EV like '%$theme%'";
+            $resultat = $bdd->getPDO()->query($sql);
+            Table::printTableButton("EVENEMENTS","Inscription",$resultat);
+        }
+        break;
+    default:
         echo 'Table non trouve';
 
     }
@@ -192,10 +198,11 @@ if (isset($_POST["search"]))
 
 ?>
 <script src="../scripts/trier_table.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="rating.js"></script>
-</body>
-</html>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../scripts/rating.js"></script>
+    </body>
+    </html>
+    
