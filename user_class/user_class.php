@@ -198,7 +198,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Liste des évènements</a>
-         <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
+          <a class="nav-item nav-link" href="../tables/table.php?nom_table=OLD_EVENEMENTS">Ancien évènements</a>
+          <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
         </div>
       </li>
       <li class="nav-item">
@@ -226,7 +227,10 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Liste des évènements</a>
+
+          <a class="nav-item nav-link" href="../tables/table.php?nom_table=OLD_EVENEMENTS">Ancien évènements</a>
          <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
+
            <a class="nav-item nav-link" href="../tables/table.php?nom_table=SUP_EVENEMENTS">Supprimer des Évènements</a>
            <a class="nav-item nav-link" href="../map/map.php">Carte des évènements</a>
         </div>
@@ -278,7 +282,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="nav-item nav-link" href="../tables/table.php?nom_table=EVENEMENTS">Liste des évènements</a>
-         <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
+          <a class="nav-item nav-link" href="../tables/table.php?nom_table=OLD_EVENEMENTS">Ancien évènements</a>
+          <a class="nav-item nav-link" href="../tables/table.php?nom_table=MES_EVENEMENTS">Mes Évènements</a>
         </div>
       </li>
       <li class="nav-item dropdown">

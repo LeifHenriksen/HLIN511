@@ -25,8 +25,7 @@ function click_etoile(etoile_id)
 	    data: { id_ev : id_ev, note : note }
 	})
 	    .done(function( msg ) {
-		console.log(msg);
-		alert( "Note enregistre.");
+		alert(msg);
 	    });
     });
 }

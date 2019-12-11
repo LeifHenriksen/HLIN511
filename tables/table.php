@@ -63,9 +63,14 @@ if(isset($_GET["nom_table"]))
             $user->inscription($_GET["Inscription"], $bdd);
         }
         
-        $sql = "SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF, DATE_EV FROM EVENEMENT";
+        $sql = "SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF, DATE_EV FROM EVENEMENT WHERE DATE_EV > CURRENT_DATE()";
         $resultat = $bdd->getPDO()->query($sql);
         Table::printTableButton("EVENEMENTS","Inscription",$resultat);
+        break;
+    case "OLD_EVENEMENTS":
+        $sql = "SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF, DATE_EV FROM EVENEMENT WHERE DATE_EV < CURRENT_DATE()";
+        $resultat = $bdd->getPDO()->query($sql);
+        Table::printTableButtonEtEtoiles("OLD_EVENEMENTS","",$resultat, $bdd, true);
         break;
     case "CONTRIBUTEURS":
         if(isset($_GET["Supprimer"]))

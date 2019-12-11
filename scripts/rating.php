@@ -10,17 +10,26 @@ if(isset($_SESSION['username']))
     $id_evenement = $_REQUEST["id_ev"];
 
     $sql = 'SELECT * FROM RATING WHERE ID_EV = '.$id_evenement.' AND ID_UTILISATEUR = '.$_SESSION['user_id'];
-    $resultat = $bdd->getPDO()->query($sql);
+    $note_existe= $bdd->getPDO()->query($sql);
+
+    $sql = 'SELECT * FROM EVENEMENT WHERE DATE_EV >= CURRENT_DATE() AND ID_EVENT = '.$id_evenement;
+    $evenement_passe = $bdd->getPDO()->query($sql);
     
-    if($resultat->rowCount() <= 0)
+    if($note_existe->rowCount() <= 0 && $evenement_passe->rowCount()<= 0)
     {
         $sql = 'INSERT INTO RATING VALUES ('.$id_evenement.','.$_SESSION['user_id'].','.$note.')';
         $bdd->getPDO()->query($sql);
+        echo "Note enregistre.";
     }
-    else
+    else if($evenement_passe->rowCount()<= 0)
     {
         $sql = 'UPDATE RATING SET NOTE = '.$note.' WHERE ID_EV = '.$id_evenement.' AND ID_UTILISATEUR = '.$_SESSION['user_id'];
         $bdd->getPDO()->query($sql);
+        echo "Note enregistre.";
+    }
+    else
+    {
+        echo "Cet événement n'a pas encore eu lieu.";
     }
     //echo var_dump($_REQUEST);
 }
