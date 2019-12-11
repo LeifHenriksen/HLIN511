@@ -1,11 +1,12 @@
 \documentclass[french]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{graphicx}
 \usepackage{babel}
 
 \title{Rapport Projet HLIN511}
 \author{HENRIKSEN LAREZ Leif, SIMIONE Jeremy}
-\date{}
+\date{Décembre 2019}
 
 \begin{document}
     \begin{titlepage}
@@ -16,14 +17,14 @@
         \tableofcontents
     \newpage
         \section{Introduction}
-            Dans ce rapport, nous allons présenter notre projet du module HLIN511. En premier lieu nous allons parler des différents outils que nous avons utilisés pour réaliser notre projet, ensuite nous allons expliciter les fonctionnalités que nous avons implémentées, enfin, en dernier lieu, nous parlerons du Schéma de modélisation de la base de données et de la conclusion du projet.
+            Dans ce rapport, nous allons présenter notre projet du module HLIN511. En premier lieu nous allons parler des différents outils que nous avons utilisés pour réaliser notre projet, ensuite nous allons expliciter les fonctionnalités que nous avons implémentées, enfin, en dernier lieu, nous montrerons un schéma de modélisation de la base de données et de la conclusion du projet.
         \section{Outils}
-            Pour chaque situation nous avons utilise les outils suivants :
+            Pour chaque situation nous avons utilisé les outils suivants :
             \subsection{Frontend}
-            \subtitle{JavaScript} : \\Nous avons utilisé Javascript pour trier les tables suivant la colonne choisie par l'utilisateur,pour faire des requêtes asynchrones avec AJAX qui ont été très utiles pour réaliser un auto-complete ainsi que pour la réalisation du système de notes et enfin pour gérer la carte des évènements.\\
+            \subtitle{JavaScript} : \\Nous avons utilisé Javascript pour trier les tables suivant la colonne choisie par l'utilisateur,pour faire des requêtes asynchrones avec AJAX qui ont été très utiles pour réaliser un auto-complete dans un fromulaire ainsi que pour la réalisation du système de notes et enfin pour gérer la carte des évènements.\\
             \par
              Bootstrap : \\ Nous avons choisi d'utiliser le framework Bootstrap pour la partie design du site.
-            Ce framework nous a été très utile car il est quasi-automatiquement adapté pour les mobiles (responsive).
+            Ce framework nous a été très utile car il est automatiquement adapté pour les mobiles (responsive).
             Son utilisation se fait via des attributs prédéfinis (i.e des classes prédefinies) à mettre en place dans les balises html. 
             
             \subsection{Backend}
@@ -31,17 +32,17 @@
             \subsection{Base de données}
             MySQL :\\ La base de données utilisée pour ce projet est stockée sur notre serveur qui contient une application Web de gestion de base de données nommée "PHPMYADMIN" et qui fonctionne sous MYSQL.
             Cette application est très simple d'utilisation et nous a facilement permis de créer notre bases, nos tables,exécuter des requêtes...
-            Nous avons créer une classe base de données afin de ne pas a avoir a chaque fois a écrire le code de connexion à la base.
+            Nous avons créée une classe base de données afin de ne pas a avoir à chaque fois à réecrire le code de connexion à la base.
             
         \section{Liste des fonctionnalités}
             \subsection{Login}
-            Le login est nécessaire pour se connecter au site et pour s'inscrire aux événements.
+            Le login est nécessaire pour se connecter au site et pour s'inscrire aux évènements.
             Il utilise un formulaire simple qui contient le nom d'utilisateur et son mot de passe et qui va vérifier grâce a un script PHP l'exactitude des informations dans la base de données et qui si les renseignements sont correctes connecte l'utilisateur au site et le redirige sur la page d'acceuil.
             \subsection{Rôles}
-            Pour réaliser le projet les consignes étaient de réaliser trois rôles distincts à savoir :
-            Un rôle utilisateur
-            Un rôle contributeur
-            Un rôle administrateur
+            Pour réaliser le projet les consignes étaient de réaliser trois rôles distincts à savoir :\\
+            Un rôle utilisateur\\
+            Un rôle contributeur\\
+            Un rôle administrateur\\\\
             Nous avons réussi a implémenter ces différents rôles grâce à l'ajout d'un attribut correspondant au type d'utilisateur dans la table de nos utilisateurs.
             Nous avons choisi cette solution car elle s'avérait être la plus simple,en effet elle nous a évité de faire des requetes complexes car pas besoin de faire une quelconque jointure pour savoir le rôle de l'utilisateur.
             Nous avons aussi créée une classe PHP permettant de stocker les informations relatives a l'utilisateur en cours et qui contient différentes méthodes propre a chaque type d'utilisateur comme par exemple l'affichage d'une barre de navigation différente ou encore l'inscription ou la suppression d'évènements. 
@@ -53,9 +54,14 @@
             L'utilisateur peut dérouler une liste d'évènements et sélectionner en cochant une case l'évènement qu'il veut faire apparaître sur la carte.
             La mise a jour de la liste des événements et des positions associées sur la page de la carte est mise à jour automatiquement a chaque fois qu'elle est lancée grâce a une fonction qui encode au format JSON dans un fichier les données de la table SQL correspondante aux différents évènements.
         \section{Schéma de modélisation}
+        \begin{figure}[!h]
+        \centering
+        \includegraphics[width=\textwidth]{schema.png}
+        \caption{Un modèle entité-association de la base de données}
+        \end{figure}
         \section{Conclusion}
         Dans ce projet nous avons appris a gérer des bases de données avec PHP,utiliser un serveur ,utiliser des frameworks comme Bootstrap,créer des bases de données.
-        Nous avons réussi à implémenter toutes les fonctionnalitées du projet mais nous avons aussi été faces a des difficultés pendant ce projet comme par exemple pour créer des formulaires dynamiques ou pour générer un fichier JSON automatiquement que nous avons pu surmonter grâce a la recherche des différentes documentation.
+        Nous avons réussi à implémenter toutes les fonctionnalitées du projet mais nous avons aussi été faces a des difficultés pendant ce projet comme par exemple pour créer des formulaires dynamiques ou pour générer un fichier JSON automatiquement que nous avons pu surmonter grâce a la recherche de documentation.
         
         
 \end{document}
