@@ -15,6 +15,9 @@
           cursor: pointer;
           color: orange;
  }
+      .fa-star {
+          cursor: pointer;
+       }
       </style>
 </head>
 <body class="bg">
@@ -100,7 +103,7 @@ if(isset($_GET["nom_table"]))
                 WHERE E.ID_EVENT = V.ID_EV
                 AND V.ID_VISITEUR =".$user->getUserID().";";
         $resultat = $bdd->getPDO()->query($sql);
-        Table::printTableButtonEtEtoiles("MES_EVENEMENTS","Supprimer_inscription",$resultat, $bdd);
+        Table::printTableButtonEtEtoiles("MES_EVENEMENTS","Supprimer_inscription",$resultat, $bdd, false);
         break;
     case "THEMES":
         if(isset($_GET["Supprimer"]))
@@ -145,7 +148,7 @@ if(isset($_GET["nom_table"]))
                 FROM EVENEMENT
                 WHERE ID_CREATEUR = ".$user->getUserID();
         $resultat = $bdd->getPDO()->query($sql);
-        Table::printTableButton("MES_CONTRIBUTIONS","Supprimer",$resultat);
+        Table::printTableButtonEtEtoiles("MES_CONTRIBUTIONS","Supprimer",$resultat, $bdd, true);
         break;
     case "SKI" :
         if(isset($_GET["Inscription"] ))

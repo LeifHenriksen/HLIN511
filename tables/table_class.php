@@ -83,7 +83,7 @@ class Table
                 echo '</form>';
     }
 
-    public static function printTableButtonEtEtoiles($nomtable, $nombutton, $resultat_requete, $bdd)
+    public static function printTableButtonEtEtoiles($nomtable, $nombutton, $resultat_requete, $bdd, $avg)
     {
         $size_col = $resultat_requete->columnCount();
         $premier_ligne = $resultat_requete->fetch();
@@ -107,54 +107,86 @@ class Table
                 echo '<tbody>';
 
                 //pour ne pas sauter la premier ligne
-                (new self)->print_row_button_etoiles($premier_ligne, $size_col, $nombutton, $bdd);
+                (new self)->print_row_button_etoiles($premier_ligne, $size_col, $nombutton, $bdd, $avg);
                 foreach ($resultat_requete as $row) 
                 {
-                    (new self)->print_row_button_etoiles($row, $size_col, $nombutton, $bdd);    
+                    (new self)->print_row_button_etoiles($row, $size_col, $nombutton, $bdd, $avg);    
                 }
                 echo '</tbody>'; 
                 echo '</table>';
                 echo "<input type='hidden' name='nom_table' value=$nomtable>";
                 echo '</form>';
     }
-    private function print_etoiles($id_evenement, $note){
+    private function print_etoiles($id_evenement, $note, $avg){
         echo '<td>';
-
-        if($note == NULL)
+        if(!$avg)
         {
-            for($i = 1; $i<6; $i++)
+            if($note == NULL)
             {
-                echo '<span id="etoile_'.$i.'_ev_'.$id_evenement.'"class="fa fa-star"  onClick="click_etoile(this.id)"></span>';
-            }
-        }
-        else
-        {
-            for($i = 1; $i<6; $i++)
-            {
-                if((int)$note > 0)
-                {
-                echo '<span id="etoile_'.$i.'_ev_'.$id_evenement.'"class="fa fa-star checked"  onClick="click_etoile(this.id)"></span>';
-                $note--;
-                }
-                else
+                for($i = 1; $i<6; $i++)
                 {
                     echo '<span id="etoile_'.$i.'_ev_'.$id_evenement.'"class="fa fa-star"  onClick="click_etoile(this.id)"></span>';
                 }
             }
+            else
+            {
+                for($i = 1; $i<6; $i++)
+                {
+                    if((int)$note > 0)
+                    {
+                        echo '<span id="etoile_'.$i.'_ev_'.$id_evenement.'"class="fa fa-star checked"  onClick="click_etoile(this.id)"></span>';
+                        $note--;
+                    }
+                    else
+                    {
+                        echo '<span id="etoile_'.$i.'_ev_'.$id_evenement.'"class="fa fa-star"  onClick="click_etoile(this.id)"></span>';
+                    }
+                }
+            }
         }
-            
+        else
+        {
+            if($note == NULL)
+            {
+                for($i = 1; $i<6; $i++)
+                {
+                    echo '<span id="etoile_'.$i.'_ev_'.$id_evenement.'"class="fa fa-star"></span>';
+                }
+            }
+            else
+            {
+                for($i = 1; $i<6; $i++)
+                {
+                    if((int)$note > 0)
+                    {
+                        echo '<span id="etoile_'.$i.'_ev_'.$id_evenement.'"class="fa fa-star checked"></span>';
+                        $note--;
+                    }
+                    else
+                    {
+                        echo '<span id="etoile_'.$i.'_ev_'.$id_evenement.'"class="fa fa-star"></span>';
+                    }
+                }
+            }
+        }
         echo '</td>';
     }
-
     
-    private function print_row_button_etoiles($ligne, $size, $nombutton, $bdd)
+    
+    private function print_row_button_etoiles($ligne, $size, $nombutton, $bdd, $avg)
     {
-        $sql = 'SELECT NOTE FROM RATING WHERE ID_EV = '.$ligne[0].' AND ID_UTILISATEUR = '.$_SESSION['user_id'];
-        //echo $sql;
-        $esultat = $bdd->getPDO()->query($sql);
-        $note = $esultat->fetch();
-        //var_dump($note[0]);
-        
+        if($avg)
+        {
+            $sql = 'SELECT AVG(NOTE) FROM RATING WHERE ID_EV = '.$ligne[0];
+            $resultat = $bdd->getPDO()->query($sql);
+            $note = $resultat->fetch();
+        }
+        else
+        {
+            $sql = 'SELECT NOTE FROM RATING WHERE ID_EV = '.$ligne[0].' AND ID_UTILISATEUR = '.$_SESSION['user_id'];
+            $resultat = $bdd->getPDO()->query($sql);
+            $note = $resultat->fetch();
+        }
         echo '<tr>';
         for($i = 0; $i<$size; $i++) 
         {
@@ -162,7 +194,7 @@ class Table
             echo $ligne[$i];    
             echo '</td>';   
         }
-        (new self)->print_etoiles($ligne[0], $note[0]);
+        (new self)->print_etoiles($ligne[0], $note[0], $avg);
         echo '<td>';
         //$ligne[0]==id
         echo '<button class="btn btn-success"style="width:100%"" name="'.$nombutton.'" type="submit" value="'.$ligne[0].'">'.$nombutton.'</button>';
