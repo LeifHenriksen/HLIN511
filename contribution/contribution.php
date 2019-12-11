@@ -94,8 +94,9 @@ else if($_SESSION['username'] != "")
         <form id="bg"class="form-container" method="post"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" style="width: 100%;" >
         <div class="form-group">
           <label for="inputNomEvent">Nom de l'évènement</label>
-          <input type="text" class="form-control" name="nomEV" id="inputNomEvent" placeholder="Entrez le nom de l'évènement" value="<?php echo htmlspecialchars($nomEV);?>"required>
-<span class="error"><?php echo $nameErr;?></span> 
+          <input type="text" class="form-control" name="nomEV" id="inputNomEvent" placeholder="Entrez le nom de l'évènement" 
+          value="<?php if(isset($nomEV)){echo htmlspecialchars($nomEV);}?>"required>
+<span class="error"><?php if(isset($nameErr)){ echo $nameErr;}?></span> 
         </div>
         <div class="form-group">
           <label >Adresse</label>

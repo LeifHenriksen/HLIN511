@@ -19,17 +19,18 @@ if(isset($_SESSION['username']))
     {
         $sql = 'INSERT INTO RATING VALUES ('.$id_evenement.','.$_SESSION['user_id'].','.$note.')';
         $bdd->getPDO()->query($sql);
-        echo "Note enregistre.";
+        echo '{"status" : true, "message" : "Note enregistre"}';
     }
     else if($evenement_passe->rowCount()<= 0)
     {
         $sql = 'UPDATE RATING SET NOTE = '.$note.' WHERE ID_EV = '.$id_evenement.' AND ID_UTILISATEUR = '.$_SESSION['user_id'];
         $bdd->getPDO()->query($sql);
-        echo "Note enregistre.";
+        echo '{"status" : true, "message" : "Note enregistre"}';
+        
     }
     else
     {
-        echo "Cet événement n'a pas encore eu lieu.";
+        echo '{"status" : false, "message" : "Cet événement n\'a pas encore eu lieu."}' ;
     }
     //echo var_dump($_REQUEST);
 }

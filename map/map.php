@@ -2,7 +2,8 @@
   <head>  
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width"/>
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
        <link rel="stylesheet" type="text/css" href="../login/style2.css">
       <meta name="viewport" content="width=device-width"/>
     <script src="../login/jquery-3.4.1.js"></script>
@@ -24,26 +25,30 @@ include '../user_class/user_class.php';
 include '../bdd_class/bdd_class.php';
 
 session_start();
+$bdd = new DataBase();
 if (isset($_GET['deconnexion']))
 {
-    session_unset();
-    header("location:login.php");
+   header("location:../login/logout.php");
 }
-else if($_SESSION['username'] != "")
+else if(isset($_SESSION['username']))
 {
 
-    $bdd = new DataBase();
+    //$bdd = new DataBase();
     $ActualUser= new User($_SESSION['username'], null, $bdd,$_SESSION['loggedin']);
     $user      = $_SESSION['username'];
     $user_type = $_SESSION['user_type'];
     $acess_type = '';
     $ActualUser->printNavBar($user_type);
 }
-    $statement=$bdd->getPDO()->prepare("select NOM_EVENT,LATITUDE,LONGITUDE from EVENEMENT");
+else
+{
+    User::printNavGuest(); 
+}
+    $statement=$bdd->getPDO()->prepare("select NOM_EVENT,LATITUDE,LONGITUDE,DESCRIPTIF from EVENEMENT");
     $datas = array();
     if($statement->execute()) {
-        $res = $statement->fetchAll(PDO::FETCH_ASSOC);
-  foreach ($res as $row);
+      $res = $statement->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($res as $row);
 
         $datas = json_encode($res);
          
@@ -54,8 +59,9 @@ else if($_SESSION['username'] != "")
   //  echo $datas;
     
     $fp = fopen('../map/events.json', 'w');
+    //enlever les spaces
     fwrite($fp, json_encode($res));
-    //var_dump(json_encode($res));
+   //  var_dump($res);
     fclose($fp);
 ?>
 <div class="container-fluid">
@@ -63,10 +69,9 @@ else if($_SESSION['username'] != "")
   <br>
   <br>
   <br>
-  <br>
-    <div id="points_interet" class="points_interet" style="width:100%; height:25%"></div>
+    <div id="points_interet" class="points_interet" style="width:100%;"></div>
     <div id="map" class="map" style="width:100%; height:75%"></div>
-    <img id="markerProto" class="marker" src="marker.png" width="50" height="50"  />
+    <img id="markerProto" class="marker" src="marker2.png" width="50" height="50"  />
     <div id="popupProto"  style="display:none; font-size:18pt; color:black; margin-left: -100px; margin-top: -110px"></div>
     </div>
     <script src="map.js"></script>

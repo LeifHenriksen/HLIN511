@@ -63,7 +63,7 @@ if(isset($_GET["nom_table"]))
             $user->inscription($_GET["Inscription"], $bdd);
         }
         
-        $sql = "SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF, DATE_EV FROM EVENEMENT WHERE DATE_EV > CURRENT_DATE()";
+        $sql = "SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF, DATE_EV FROM EVENEMENT WHERE DATE_EV >= CURRENT_DATE()";
         $resultat = $bdd->getPDO()->query($sql);
         Table::printTableButton("EVENEMENTS","Inscription",$resultat);
         break;
@@ -190,7 +190,6 @@ if(isset($_GET["nom_table"]))
         {
             $theme=$_POST["search"];
       
-
             $sql = "SELECT NOM_EVENT, ADRESSE, THEME, DESCRIPTIF, DATE_EV FROM EVENEMENT WHERE THEME LIKE '%$theme%' or DATE_EV like '%$theme%'";
             $resultat = $bdd->getPDO()->query($sql);
             Table::printTableButton("EVENEMENTS","Inscription",$resultat);

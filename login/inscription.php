@@ -41,7 +41,7 @@ if (isset($_POST['login']) && isset($_POST['mdp']))
                 echo '<div class="alert alert-danger" role="alert">
   Vous etes bien inscrit !
 </div>';
-//header('Location: ../login/principale.php');
+header('Location: ../login/login.php');
         }
         }
       
@@ -78,7 +78,7 @@ if (isset($_POST['login']) && isset($_POST['mdp']))
         </div>
         <button type="submit" class="btn btn-primary btn-block" name="test">S'inscrire</button>
         <br>
-        <span class="error"><?php if ($nameErr) {
+        <span class="error"><?php if (isset($nameErr)) {
          echo $nameErr;}?></span> 
       </form>
       </section>

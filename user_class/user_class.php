@@ -178,7 +178,22 @@
             }
         }
         function supprimer_contribution($id_evenement, $bdd){}
-        
+        static function printNavGuest()
+        {
+          echo'<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <a class="nav-item nav-link" href="../login/guest.php">Evènements</a>  
+      <a class="nav-item nav-link" href="../map/map.php">Carte des évènements</a>
+      <a class="nav-item nav-link" href="../login/login.php">Se connecter</a>
+    </ul>
+  </div>
+</nav>';
+        }
         function printNavBar($user_type){
                 switch ($user_type) {
                     case 0:
@@ -253,8 +268,6 @@
 <li class="nav-item">
         <a class="nav-item nav-link" href="../tables/table.php?nom_table=CONTRIBUTEURS">Supprimer des contributeurs</a>
         </li>
-        <form method="get"><button type="submit" class="btn btn-light" name="connecter">
-        Se connecter </button></form>
         <form method="get"><button type="submit" class="btn btn-danger" name="deconnexion" >Déconnexion</button></form>
     </ul>
   </div>

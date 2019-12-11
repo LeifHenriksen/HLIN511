@@ -12,7 +12,7 @@ class Table
             return;
         }
         
-        echo '<table style="padding-top:10vh" id = "table_generique">';
+        echo '<table class="table table-hover" id = table_generique>';
         echo '<thead>
                 <tr>
                    <th colspan="',$size_col,'">',$nomtable,'</th>
