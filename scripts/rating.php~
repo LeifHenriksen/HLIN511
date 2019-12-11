@@ -1,0 +1,17 @@
+<?php
+session_start();
+include '../bdd_class/bdd_class.php';
+if(isset($_SESSION['username'])) 
+{	
+    $bdd = new DataBase();
+
+    // get the q parameter from URL
+    $note         = $_REQUEST["note"];
+    $id_evenement = $_REQUEST["id_ev"];
+
+    $sql       = 'INSERT INTO RATING VALUES ('.$id_evenement.','.$_SESSION['user_id'].','.$note.')';
+    $resultat  = $bdd->getPDO()->query($sql);
+    
+    //echo var_dump($_REQUEST);
+}
+?> 

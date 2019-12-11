@@ -1,0 +1,6 @@
+function click_etoile(etoile_id)
+{
+    $('document').ready(function (){
+	console.log($('#'+etoile_id));
+    });
+}
