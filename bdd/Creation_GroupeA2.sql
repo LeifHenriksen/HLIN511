@@ -13,9 +13,8 @@
 	Création de la base de  données
 	*/
 	DROP TABLE IF EXISTS DEMANDE_CONTRIBUTEUR;
-	DROP TABLE IF EXISTS MOYENNE;
-	DROP TABLE IF EXISTS RATING;
 	DROP TABLE IF EXISTS VISITE;
+	DROP TABLE IF EXISTS RATING;
 	DROP TABLE IF EXISTS EVENEMENT;
 	DROP TABLE IF EXISTS NIVEAU_THEME;
 	DROP TABLE IF EXISTS THEME;
@@ -33,12 +32,12 @@
 	PRENOM VARCHAR(50),
 	EMAIL VARCHAR (50),
 	MDP VARCHAR(50),
-	TYPE_UTILISATEUR INT,
+	TYPE_UTILISATEUR NUMERIC(1),
 	ADRESSE VARCHAR(50),
 	AGE INT NOT NULL,
 	CONSTRAINT PK_UTILISATEURS PRIMARY KEY (ID),
+	CONSTRAINT DOM_TYPE_UTILISATEUR CHECK ( TYPE_UTILISATEUR BETWEEN 0 AND 2),
 	CONSTRAINT DOM_EMAIL CHECK ( EMAIL LIKE '%@%'),
-	CONSTRAINT DOM_TYPE_UTILISATEUR CHECK  ( TYPE_UTILISATEUR BETWEEN 0 AND 2),
 	CONSTRAINT DOM_AGE CHECK (AGE > 0)
 	);
 
@@ -104,7 +103,7 @@ CREATE TABLE VISITE(
 	ID_UTILISATEUR INT,
 	NOTE FLOAT,
 	DATE_EVENT DATE,
-	VALEUR_NOTE VARCHAR(20),
+	VALEUR_NOTE VARCHAR(20)
 	);	
 
 	CREATE TABLE DEMANDE_CONTRIBUTEUR(
@@ -181,7 +180,7 @@ CREATE TABLE VISITE(
 	 FOR EACH ROW
 	 BEGIN 
 	 		IF NEW.DATE_EVENT > '2019-12-15' AND NEW.NOTE is not null THEN
-	 		 SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "L'evenement n'est pas encore passé, vous ne pouvez pas le noter", MYSQL_ERRNO = 1001; 
+	 		 SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "L'évènement n'est pas encore passé, vous ne pouvez pas le noter", MYSQL_ERRNO = 1001; 
 	 		 END IF;
 	 		 END //
 
@@ -203,8 +202,7 @@ Trigger pour compléter la table moyenne automatiquement après l'ajout de tuple
 		END //		 
 
 /*
-Trigger pour l'ajout d'un evenement passé avec une note si l'evenement n'est pas passé
-	alors il sera impossible de le mettre dans la table rating
+Trigger pour l'ajout d'un evenement passé avec une note si l'evenement n'est pas passé alors il sera impossible de le mettre dans la table rating
 */
 	 DELIMITER //		 
 	CREATE OR REPLACE TRIGGER autocomplete AFTER  INSERT ON EVENEMENT
@@ -212,6 +210,20 @@ Trigger pour l'ajout d'un evenement passé avec une note si l'evenement n'est pa
 	BEGIN
 			INSERT INTO rating VALUES (NEW.ID_EVENT, NEW.ID_CREATEUR,new.NOTE,new.DATE_EV);
 			END //
+
+
+/*
+Trigger pour vérifier que l'insertion d'un evenement est bien faite par un admin 
+*/
+DELIMITER //
+CREATE TRIGGER verifRol BEFORE INSERT ON EVENEMENT
+FOR EACH ROW
+BEGIN
+	SET @TYPE_USER = (SELECT TYPE_UTILISATEUR from utilisateur where id= NEW.ID_CREATEUR);
+	IF @TYPE_USER<1 THEN
+		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT ='Vous devez être un administrateur ou un contributeur pour pouvoir insérer un évènement',MYSQL_ERRNO=1001;
+		END IF;
+		END //
 
 	/*
 	Défintions de fonctions 
@@ -234,4 +246,4 @@ Trigger pour l'ajout d'un evenement passé avec une note si l'evenement n'est pa
 	    END IF;
 	    RETURN (NIVEAU);
 	END //
-	      
+	    
