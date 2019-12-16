@@ -12,6 +12,10 @@ INSERT INTO EVENEMENT (ID_CREATEUR, NOM_EVENT, ADRESSE, LONGITUDE,LATITUDE, THEM
 INSERT INTO RATING VALUES (4,2,5,'2020-10-5');
   /*Insertion d'une note d'un evenement dont la date est passée */
   INSERT INTO RATING VALUES (1,1,5,'2019-10-5');
+ /*Vérifiaction du trigger qui calcule la moyenne des notes pour cahque evenement*/
+ INSERT INTO RATING VALUES (1,1,5,'2019-10-5');
+ INSERT INTO RATING VALUES (1,2,4,'2019-10-5');
+ SELECT * FROM MOYENNE;
 /*trouver tous les fils d'un theme*/
 SELECT NT.NOM_THEME AS FILS
 FROM THEME T, NIVEAU_THEME NT
