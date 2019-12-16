@@ -1,35 +1,17 @@
-/*Nom des visiteurs des evenements historiques de montpellier*/
-SELECT NOM_VISITEUR
-FROM VISITEUR VIS, EVENEMENT EV, VISITE
-WHERE VIS.ID_VISITEUR = VISITE.ID_VISITEUR
-AND EV.ID_EV = VISITE.ID_EV
-AND EV.LOCALISATION = 'MONTPELLIER';
-
-/*JOIN de visiteurs et evenements*/
-SELECT *
-FROM VISITEUR VIS, EVENEMENT EV, VISITE
-WHERE VIS.ID_VISITEUR = VISITE.ID_VISITEUR
-AND EV.ID_EV = VISITE.ID_EV;
-
-/*JOIN V2*/
-SELECT *
-FROM VISITE
-JOIN VISITEUR ON VISITEUR.ID_VISITEUR = VISITE.ID_VISITEUR
-JOIN  EVENEMENT ON EVENEMENT.ID_EV = VISITE.ID_EV;
-
-/*Les visiteurs de la fete0*/
-SELECT VISITE.ID_VISITEUR, NOM_VISITEUR
-FROM VISITE, VISITEUR, EVENEMENT EV
-WHERE VISITEUR.ID_VISITEUR = VISITE.ID_VISITEUR
-AND EV.ID_EV = VISITE.ID_EV
-AND EV.NOM = 'la fete0';
-
-
-/*Liste des ADMINS*/
-SELECT *
-FROM CONTRIBUTEUR, ADMINISTRATEUR
-WHERE CONTRIBUTEUR.ID_CONTRIBUTEUR = ADMINISTRATEUR.ID_CONTRIBUTEUR;
-
+/* Test des triggers */
+/* Insertion d'un évènement  en n'étant pas adminstrateur ou contributeur*/
+INSERT INTO EVENEMENT (ID_CREATEUR, NOM_EVENT, ADRESSE, LONGITUDE,LATITUDE, THEME, DATE_EV,NOTE, DESCRIPTIF, EFFECTIF_MAX, EFFECTIF_MIN)
+                       VALUES(1, "Nage 100m", "Nîmes",4.1,43.6,"SPORTS","2020-10-5",null,"A la piscine municipale de Nîmes ",20,60);
+/* Insertion d'un évènement  en étant adminstrateur*/
+INSERT INTO EVENEMENT (ID_CREATEUR, NOM_EVENT, ADRESSE, LONGITUDE,LATITUDE, THEME, DATE_EV,NOTE, DESCRIPTIF, EFFECTIF_MAX, EFFECTIF_MIN)
+                       VALUES(2, "Nage 100m", "Nîmes",4.1,43.6,"SPORTS","2020-10-5",null,"A la piscine municipale de Nîmes ",20,60);
+/* Insertion d'un évènement  en étant contributeur*/
+INSERT INTO EVENEMENT (ID_CREATEUR, NOM_EVENT, ADRESSE, LONGITUDE,LATITUDE, THEME, DATE_EV,NOTE, DESCRIPTIF, EFFECTIF_MAX, EFFECTIF_MIN)
+                       VALUES(3, "Nage 100m", "Nîmes",4.1,43.6,"SPORTS","2020-10-5",null,"A la piscine municipale de Nîmes ",20,60);
+ /*Insertion d'une note d'un evenement dont la date n'est pas encore passée */
+INSERT INTO RATING VALUES (4,2,5,'2020-10-5');
+  /*Insertion d'une note d'un evenement dont la date est passée */
+  INSERT INTO RATING VALUES (1,1,5,'2019-10-5');
 /*trouver tous les fils d'un theme*/
 SELECT NT.NOM_THEME AS FILS
 FROM THEME T, NIVEAU_THEME NT
