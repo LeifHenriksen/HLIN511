@@ -1,4 +1,5 @@
 \documentclass[french]{article}
+\usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{babel}
@@ -16,10 +17,36 @@
         \tableofcontents
     \newpage
         \section{Introduction}
-            Dans ce rapport, nous allons présenter notre projet du module HLIN511. Nous avons fait une base de données pour gérer des évènements, l'objective de cette base est principalement de enregistrer et manipuler des données sur les évènements et les visiteurs. Nous allons parler en premier lieu, des différentes tables, triggers et procédures que nous avons créé pour mettre en place cette base de données, en second lieu nous allons montrer et expliquer le modèle Entité/Association de notre base, en dernier lieu nous allons donner une conclusion.
+            Dans ce rapport, nous allons présenter notre projet du module HLIN511. Nous avons fait une base de données pour gérer des évènements, l'objectif de cette base est principalement d' enregistrer et manipuler des données sur les évènements et les visiteurs. Nous allons parler en premier lieu, des différentes tables, triggers et procédures que nous avons créé pour mettre en place cette base de données, en second lieu nous allons montrer et expliquer le modèle Entité/Association de notre base, en dernier lieu nous allons donner une conclusion.\\
+            
+            Pour ce projet nous avons dû utiliser MySQL qui est un SGBD (i.e un Système de Gestion de Base de Données) qui est largement connu et exploité comme système de gestion de base de données pour des applications utilisant PHP.
+            
+            Pour collaborer à distance nous avons utiliser Github.
+           
+        \begin{figure}[!h]
+        \centering
+        \includegraphics[width=\textwidth]{mysql-logo.png}
+        \caption{Logo de MySQL}
+        \end{figure}
+            
     \newpage
-    \section{Thèmes}
-        Pour gérer les thèmes nous avons crée une forêt, si un thème a comme père NULL, alors cette thème est un thème racine, nous avons aussi créé une table, niveaux, qui contient les niveaux de un thème dans un arbre, cette table est rempli a fur et à mesure grâce à un trigger qui donne a chaque nouveau thème un niveau, 0 si le thème est un thème racine, sinon le niveaux du père plus un. Nous avons fait cette système pour pouvoir accéder a tous les fils, grand fils, etc, de un thème avec une seule requête. 
+    \section{Fonctionnalités implémentées}
+    \subsection{Gestion des utilisateurs}
+        Pour gérer le système d'utilisateurs et de rôles nous avons mis au point une table nommée 'utilisateur' qui nous permet de créer des utilisateurs qui ont un nom,un prénom,un mot de passe, une adresse, un mail, une adresse et surtout un type d'utilisateur qui nous a permis de pouvoir attribuer un rôle à chaque utilisateur à savoir un rôle admin, contributeur ou tout simplement utilisateur.
+    \subsection{Gestion des évènements}
+        Pour la gestion d'évènements nous avons fait une table 'événements' dans laquelle on peut créer des évènements si c'est un contributeur ou un administrateur qui créée l'évènement nous exliquerons en détail comment nous avons empeché grâce a un trigger la création d'un évènement par un simple utilisateur.
+        Cette table contient aussi le thème de l'évenement qui est lié a la table thème et qui nous permettra donc de faire des recherches par thèmes des évènements.
+        Les positions des évènements sont placés dans la table par deux attributs qui correspondent à la longitude et la latitude de l'évènement et qui nous servira par la suite pour la partie web pour placer des marqueurs sur une carte qui correspondra à la position de chaque évènement.
+    \subsection{Inscription à un évènement}
+        Pour qu'un utilisateur puisse s'inscrire à un évènement nous avons implémenté une table nommée visite qui permet de lier un utilisateru a un évènement en stcoker l'id de l'utilsateur souhaitatn s'inscrire et l'id de lévènement auquel il veut s'inscrire.
+        Cette liaison a été possible grâce a deux clés étrangères qui font des reférences sur les tables evenemnents et utilisateur.
+        \subsection{Notation d'un évènement et moyenne}
+        Sur notre site web un utilisateur peut noter un évènement si il est inscrit et si la date dudit évènenement est bien passée.
+        Afin qu'un utilisateur puisse noter un évènement nous avons créée une table rating qui va contenir les données relatives a un évènement et un utilisateur et une note de 1 à 5 mais aussi la date de l'évènement.
+        La date nous sers à vérifier que l'évènement est bien passé, cette vérification est possible à nouveau grâce à un trigger que nous expliquerons plus en détail par la suite.
+        La table note est aussi lier via un trigger qui va dès qu'une insertion est faite dans la table rating, calculer la note moyenne de l'évènement.\\\\\\\\ 
+        \subsection{Thèmes}
+        Pour gérer les thèmes nous avons créée une forêt, si un thème n'a pas de père (autrement dit la valeur de son père est 'NULL', alors ce thème est un thème racine, nous avons aussi créée une table 'niveaux', qui contient les niveaux d'un thème dans un arbre, cette table est rempli au fur et à mesure grâce à un trigger qui donne à chaque nouveau thème un niveau, le niveau a pour valeur 0 si le thème est un thème racine, sinon le niveaux de son père plus un. Nous avons fait cette système pour pouvoir accéder a tous les fils, grand fils, etc, d'un thème avec une seule requête. 
         \begin{verbatim}
             /*trouver tous les fils d'un thème père*/
             SELECT NT.NOM_THEME AS FILS
@@ -28,9 +55,26 @@
             AND T.THEME_RACINE LIKE 'ancêtre commun'
             AND NIVEAU > (SELECT NIVEAU FROM NIVEAU_THEME WHERE NOM_THEME LIKE père')
         \end{verbatim}
-        En gardant seulement le père de un thème nous n'avons pas réussi a trouver les grand fils sans faire des requêtes récursive avec PL/SQL. 
-    \section{Demande pour devenir contributeur}
-        Dans notre site web, si un utilisateur le souhaite il peut devenir contributeur, pour arrêter les saboteurs nous avons mis en place un système de contrôle, cette système consiste à rédiger une lettre de motivation et l'envoyer aux administrateurs, après les administrateurs peuvent lire les différents demandes et les accepter ou refuser. Pour gérer cette système nous avons crée une table DEMANDE dans la quelle on garde la lettre de motivation et le identifiant de l'utilisateur, cette identifiant nous permet de afficher des informations supplémentaires de l'utilisateur et aussi nous permet de faire un éventuel changement de statut.
+        En gardant seulement le père d'un thème nous n'avons pas réussi à trouver les grand fils sans faire des requêtes récursive avec PL/SQL. \\\\
+    \subsection{Demande pour devenir contributeur}
+        Dans notre site web, si un utilisateur le souhaite il peut devenir contributeur,pour contrôler les demande et éviter un trop grand nombre de contributeurs nous avons mis en place un système de contrôle, ce système consiste à rédiger une lettre de motivation et l'envoyer aux administrateurs, ensuite les administrateurs peuvent lire les différentes demandes et ainsi les accepter ou les refuser. Pour gérer ce système nous avons créee une table 'DEMANDE' dans laquelle on garde la lettre de motivation et l'identifiant de l'utilisateur, cet identifiant nous permet d'afficher des informations supplémentaires de l'utilisateur et aussi nous permet de faire un éventuel changement de statut.
+        \newpage
+        \section{Triggers et fonctions}
+        \subsection{Ton trigger (Leif)}
+        \subsection{Trigger pour la notation d'un évènement}
+        Comme nous en avons parlé précedemment dans notre rapport pour vérifier que la notation d'un évènement concerne bien un évènement passé nous avons créée un trigger.
+        Ce trigger va tout simplement vérifier \textbf{avant l'insertion dans la table} que la date de l'évènement est passé grâce a une comparaison de la date de l'insertion par rapport à la date du jour.
+        Si l'évènement n'est pas passé il sera impossible de l'insérer dans la table rating et un message d'erreur sera affiché disant que l'évènemnt n'est pas encroe passé.
+        \subsection{Trigger pour la création de moyennes}
+        Pour remplir automatiquement une table qui correspond à la moyenne des évènements nous avons fait un trigger qui va \textbf{après insertion} dans la table rating.
+        ce trigger fonctionne grâce a deux variables propres au trigger qui font en fait différentes requetes sur la table rating :
+        - une variable nommée id afin de connaître l'id de l'évènement pour savoir s'il avait déjà une moyenne et le comparer au nouvel id (de l'insertion)
+        - une autre nommée qui récupère la moyenne des notes de l'évènement.
+        Ensuite on supprime le tuple contenant l'ancienne moyenne de l'évenement s'il y en a un et insere la note moyenne mise à jour.
+        \newpage
     \section{Conclusion}
+    Au cours de ce projet nous avons beaucoup appris surtout lors de la création de triggers qui étaient un nouveau concept pour nous et qui sont assez difficiles a prendre en main surtout au niveau de la syntaxe.
+    Nous avions déjà vu au cours de l'année précédente quelques exemples de créations de table en SQL,mais nous avions peu pratiqué.
+    Ce projet nous a donc permis d'en apprendre plus sur le langage SQL et nous a mis face d'un cas concret d'utilisation de base de données.
+    Nous avons réussi à implémenter toute les fonctionnalités demandés et le projet web a pu ainsi être entièrement réalisé grâce a notre SGBD. 
 \end{document}
-
