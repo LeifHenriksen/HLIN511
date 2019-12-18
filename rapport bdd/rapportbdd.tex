@@ -1,0 +1,36 @@
+\documentclass[french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+
+\title{Rapport Projet HLIN511}
+\author{HENRIKSEN LAREZ Leif, SIMIONE Jeremy}
+\date{Décembre 2019}
+
+\begin{document}
+    \begin{titlepage}
+        \clearpage\maketitle
+        \thispagestyle{empty}
+    \end{titlepage}
+    \newpage
+        \tableofcontents
+    \newpage
+        \section{Introduction}
+            Dans ce rapport, nous allons présenter notre projet du module HLIN511. Nous avons fait une base de données pour gérer des évènements, l'objective de cette base est principalement de enregistrer et manipuler des données sur les évènements et les visiteurs. Nous allons parler en premier lieu, des différentes tables, triggers et procédures que nous avons créé pour mettre en place cette base de données, en second lieu nous allons montrer et expliquer le modèle Entité/Association de notre base, en dernier lieu nous allons donner une conclusion.
+    \newpage
+    \section{Thèmes}
+        Pour gérer les thèmes nous avons crée une forêt, si un thème a comme père NULL, alors cette thème est un thème racine, nous avons aussi créé une table, niveaux, qui contient les niveaux de un thème dans un arbre, cette table est rempli a fur et à mesure grâce à un trigger qui donne a chaque nouveau thème un niveau, 0 si le thème est un thème racine, sinon le niveaux du père plus un. Nous avons fait cette système pour pouvoir accéder a tous les fils, grand fils, etc, de un thème avec une seule requête. 
+        \begin{verbatim}
+            /*trouver tous les fils d'un thème père*/
+            SELECT NT.NOM_THEME AS FILS
+            FROM THEME T, NIVEAU_THEME NT
+            WHERE T.NOM_THEME = NT.NOM_THEME
+            AND T.THEME_RACINE LIKE 'ancêtre commun'
+            AND NIVEAU > (SELECT NIVEAU FROM NIVEAU_THEME WHERE NOM_THEME LIKE père')
+        \end{verbatim}
+        En gardant seulement le père de un thème nous n'avons pas réussi a trouver les grand fils sans faire des requêtes récursive avec PL/SQL. 
+    \section{Demande pour devenir contributeur}
+        Dans notre site web, si un utilisateur le souhaite il peut devenir contributeur, pour arrêter les saboteurs nous avons mis en place un système de contrôle, cette système consiste à rédiger une lettre de motivation et l'envoyer aux administrateurs, après les administrateurs peuvent lire les différents demandes et les accepter ou refuser. Pour gérer cette système nous avons crée une table DEMANDE dans la quelle on garde la lettre de motivation et le identifiant de l'utilisateur, cette identifiant nous permet de afficher des informations supplémentaires de l'utilisateur et aussi nous permet de faire un éventuel changement de statut.
+    \section{Conclusion}
+\end{document}
+
