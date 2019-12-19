@@ -28,12 +28,27 @@ INSERT INTO RATING VALUES (4,2,5,'2020-10-5');
 	SELECT * FROM UTILISATEUR;
 	SELECT * FROM RATING;
 
-/*trouver tous les fils d'un theme*/
+/*Afficher les événements passés*/
+SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF, DATE_EV FROM EVENEMENT WHERE DATE_EV < CURRENT_DATE();
+
+/*Afficher les utilisateur de type contributeur*/
+SELECT ID, NOM FROM UTILISATEUR WHERE TYPE_UTILISATEUR = 2;
+
+/*Afficher demandes pour devenir contributeur*/
+SELECT ID, NOM, LM FROM UTILISATEUR, DEMANDE_CONTRIBUTEUR
+                                   WHERE ID_UTILISATEUR = ID;
+
+/*Afficher les événements créés par le utilisateur 2*/
+SELECT ID_EVENT, NOM_EVENT, ADRESSE, THEME, DESCRIPTIF 
+                FROM EVENEMENT
+                WHERE ID_CREATEUR = 2;
+
+/*trouver tous les fils, petit-fils du thème sport*/
 SELECT NT.NOM_THEME AS FILS
 FROM THEME T, NIVEAU_THEME NT
 WHERE T.NOM_THEME = NT.NOM_THEME
-AND T.THEME_RACINE LIKE 'ancetre_commun'
-AND NIVEAU > (SELECT NIVEAU FROM NIVEAU_THEME WHERE NOM_THEME LIKE 'pere');
+AND T.THEME_RACINE LIKE 'SPORT'
+AND NIVEAU > (SELECT NIVEAU FROM NIVEAU_THEME WHERE NOM_THEME LIKE 'SPORT');
 
 
 /*Test fonction */
