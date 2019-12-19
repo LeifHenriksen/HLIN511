@@ -2,7 +2,7 @@
 	FIchier : Creation_GroupeA.sql
 	Auteurs : 
 	Jérémy Simione 21709554
-	Leif Henriksen-Larez
+	Leif Henriksen Larez 21602894
 	Nom du groupe : A
 	*/
 
