@@ -1,4 +1,4 @@
-		/*
+/*
 	FIchier : Creation_GroupeA.sql
 	Auteurs : 
 	Jérémy Simione 21709554
@@ -104,9 +104,10 @@ CREATE TABLE VISITE(
 	ID_UTILISATEUR INT,
 	NOTE FLOAT,
 	DATE_EVENT DATE,
-	VALEUR_NOTE VARCHAR(20)
-	CONSTRAINT PK_MOYENNE PRIMARY KEY (ID_EV),
-	CONSTRAINT FK_MOYENNE FOREIGN KEY (ID_EV) REFERENCES EVENEMENT(ID_EVENT)
+	VALEUR_NOTE VARCHAR(20),
+	CONSTRAINT PK_MOYENNE PRIMARY KEY (ID_EV,ID_UTILISATEUR),
+	CONSTRAINT FK_MOYENNE_EV FOREIGN KEY (ID_EV) REFERENCES rating(ID_EV),
+        CONSTRAINT FK_MOYENNE_US FOREIGN KEY (ID_UTILISATEUR) REFERENCES RATING(ID_UTILISATEUR)
 	);	
 
 	CREATE TABLE DEMANDE_CONTRIBUTEUR(
@@ -208,7 +209,7 @@ Trigger pour compléter la table moyenne automatiquement après l'ajout de tuple
 Trigger pour l'ajout d'un evenement passé avec une note si l'evenement n'est pas passé alors il sera impossible de le mettre dans la table rating
 */
 	 DELIMITER //		 
-	CREATE OR REPLACE TRIGGER autocomplete AFTER  INSERT ON EVENEMENT
+	CREATE OR REPLACE TRIGGER autocomplete AFTER INSERT ON EVENEMENT
 	FOR EACH ROW
 	BEGIN
 			INSERT INTO rating VALUES (NEW.ID_EVENT, NEW.ID_CREATEUR,new.NOTE,new.DATE_EV);
@@ -249,4 +250,3 @@ BEGIN
 	    END IF;
 	    RETURN (NIVEAU);
 	END //
-	    
