@@ -1,13 +1,13 @@
 /* Test des triggers */
 /* Insertion d'un évènement  en n'étant pas adminstrateur ou contributeur*/
-INSERT INTO EVENEMENT (ID_CREATEUR, NOM_EVENT, ADRESSE, LONGITUDE,LATITUDE, THEME, DATE_EV,NOTE, DESCRIPTIF, EFFECTIF_MAX, EFFECTIF_MIN)
-                       VALUES(1, "Nage 100m", "Nîmes",4.1,43.6,"SPORTS","2020-10-5",null,"A la piscine municipale de Nîmes ",20,60);
+INSERT INTO EVENEMENT (ID_CREATEUR, NOM_EVENT, ADRESSE, LONGITUDE,LATITUDE, THEME, DATE_EV,DESCRIPTIF, EFFECTIF_MAX, EFFECTIF_MIN)
+                       VALUES(1, "Nage 100m", "Nîmes",4.1,43.6,"SPORTS","2020-10-5","A la piscine municipale de Nîmes ",20,60);
 /* Insertion d'un évènement  en étant adminstrateur*/
-INSERT INTO EVENEMENT (ID_CREATEUR, NOM_EVENT, ADRESSE, LONGITUDE,LATITUDE, THEME, DATE_EV,NOTE, DESCRIPTIF, EFFECTIF_MAX, EFFECTIF_MIN)
-                       VALUES(2, "Nage 100m", "Nîmes",4.1,43.6,"SPORTS","2020-10-5",null,"A la piscine municipale de Nîmes ",20,60);
+INSERT INTO EVENEMENT (ID_CREATEUR, NOM_EVENT, ADRESSE, LONGITUDE,LATITUDE, THEME, DATE_EV, DESCRIPTIF, EFFECTIF_MAX, EFFECTIF_MIN)
+                       VALUES(2, "Nage 100m", "Nîmes",4.1,43.6,"SPORTS","2020-10-5","A la piscine municipale de Nîmes ",20,60);
 /* Insertion d'un évènement  en étant contributeur*/
-INSERT INTO EVENEMENT (ID_CREATEUR, NOM_EVENT, ADRESSE, LONGITUDE,LATITUDE, THEME, DATE_EV,NOTE, DESCRIPTIF, EFFECTIF_MAX, EFFECTIF_MIN)
-                       VALUES(3, "Nage 100m", "Nîmes",4.1,43.6,"SPORTS","2020-10-5",null,"A la piscine municipale de Nîmes ",20,60);
+INSERT INTO EVENEMENT (ID_CREATEUR, NOM_EVENT, ADRESSE, LONGITUDE,LATITUDE, THEME, DATE_EV, DESCRIPTIF, EFFECTIF_MAX, EFFECTIF_MIN)
+                       VALUES(3, "Nage 100m", "Nîmes",4.1,43.6,"SPORTS","2020-10-5","A la piscine municipale de Nîmes ",20,60);
  /*Insertion d'une note d'un evenement dont la date n'est pas encore passée */
 INSERT INTO RATING VALUES (4,2,5,'2020-10-5');
   /*Insertion d'une note d'un evenement dont la date est passée */
