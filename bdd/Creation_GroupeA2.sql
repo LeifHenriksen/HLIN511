@@ -146,7 +146,7 @@ CREATE TABLE VISITE(
 	create trigger ajout_note BEFORE INSERT ON RATING
 	 FOR EACH ROW
 	 BEGIN 
-	 		IF NEW.DATE_EVENT > '2019-12-15' THEN
+	 		IF NEW.DATE_EVENT > CURRENT_DATE() THEN
 	 		 SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = "L'évènement n'est pas encore passé, vous ne pouvez pas le noter", MYSQL_ERRNO = 1001; 
 	 		 END IF;
 	 		 END //
