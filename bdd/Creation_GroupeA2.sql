@@ -148,7 +148,7 @@ CREATE TABLE VISITE(
 	*/
 
 	/* 
-	Trigger pour garantir 
+	Trigger pour donner un niveau
 	*/
 
 	DELIMITER //
